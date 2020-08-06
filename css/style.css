@@ -1,0 +1,261 @@
+/* General ------------------------------------------------------------------------------- */
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+h1 { 
+	font-family:"Quicksand";
+	font-weight:normal;
+	font-size: 55px;
+	text-align: center;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	font-family:"Quicksand";
+	font-weight:normal;
+	font-size: 40px;
+	text-align: center;
+	color: #000;
+	margin: auto;
+	padding-top: 20px;
+	width: 800px;
+	border-bottom: 2px solid #000;
+}
+
+h3 {
+	font-family:"Noto Sans";
+   	font-weight: normal;
+   	font-size: 16px;
+   	margin: 5px 0;
+	padding: 0;
+}
+
+h4 {
+	font-family:"Noto Sans";
+	font-weight: normal;
+	font-size: 26px;
+	color: #1a89ff;
+	margin: 5px 0;
+	padding: 0;
+}
+
+h5 {
+	font-family:"Noto Sans";
+	font-weight: normal;
+	font-size: 20px;
+	color: #1a89ff;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.center { margin: 0 auto; }
+.content{ margin: 0 auto; }
+
+/* Hover Captions ------------------------------------------------------------------------ */
+
+#HoverWrapper {
+	font: 10pt normal Arial, sans-serif;
+	height: auto;
+	margin: 20px auto 0 auto;
+	text-align: center;
+}
+
+#mainwrapper .box {
+	/*border: 5px solid #fff;*/
+	cursor: pointer;
+	height: 250px;
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 20px;
+	position: relative;
+	overflow: hidden;
+	width: 250px;
+}
+
+#mainwrapper .box img {
+	position: absolute;
+	left: 0;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;	
+	transition: all 300ms ease-out;
+}
+
+#mainwrapper .box .caption {
+	font-family:"Quicksand";
+	background-color: rgba(0,0,0,0.8);
+	position: absolute;
+	color: #fff;
+	z-index: 1;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;	
+	transition: all 300ms ease-out;
+	left: 0;
+}
+
+#mainwrapper .box .scale-caption p {
+	-webkit-transition-delay: 500ms;
+	-moz-transition-delay: 500ms;
+	-o-transition-delay: 500ms;
+	-ms-transition-delay: 500ms;	
+	transition-delay: 500ms;
+}
+
+#mainwrapper .box:hover .simple-caption {
+	-moz-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	-webkit-transform: translateY(-100%);
+	opacity: 1;
+	transform: translateY(-100%);
+}
+
+#mainwrapper .box .simple-caption {
+	height: 30px;
+	width: 250px;
+	display: block;
+	bottom: -30px;
+	line-height: 0pt;
+	text-align: center;
+}
+
+/* Header and Navigation Bar ------------------------------------------------------------- */
+
+#header { 
+	width: 100%; 
+	background: url('../media/header.png'); 
+	height: 100px; 	
+	position: fixed;
+	z-index: 2;
+}
+
+.headerContent { margin: 0 auto; width: 960px; }
+
+#nav { width: 410px; float: right; margin-top: 20px; }
+#logo a { color: #fff; text-decoration: none; float: left; font-size: 30px; margin-top: 20px; color: #fff; font-family:"Montserrat"; font-weight: bold; }
+#nav ul {
+	list-style: none;
+	display: block;
+	margin: 0 auto;
+	list-style: none;	
+}
+
+#nav li {
+	margin-top: 9px;	
+	float: right;
+	padding-left: 21px;
+}
+
+#nav li a { color: #fff; opacity:0.6; font-size: 16px; text-decoration: none; font-family: 'Montserrat'; font-weight: bold; }
+#nav li a.active { color: #fff; opacity:1; border-bottom: 2px solid #fff; }
+#nav li a:hover { color: #fff; opacity:1;  }
+
+/* Accordion ----------------------------------------------------------------------------- */
+
+.container1 .content, .container2 .content, .container3 .content, .container4 .content, .container5 .content, .container6 .content, .container7 .content,
+.container8 .content, .container9 .content, .container10 .content, .container11 .content, .container12 .content, .container13 .content, .container14 .content,
+.container15 .content, .container16 .content, .container17 .content {
+    display: none;
+}
+
+.container1 .accordion1, .container2 .accordion2, .container3 .accordion3, .container4 .accordion4, .container5 .accordion5, .container6 .accordion6,
+.container7 .accordion7, .container8 .accordion8, .container9 .accordion9, .container10 .accordion10, .container11 .accordion11, .container12 .accordion12,
+.container13 .accordion13, .container14 .accordion14, .container15 .accordion15, .container16 .accordion16, .container17 .accordion17 {
+    padding: 2px;
+    font-weight: bold;
+}
+
+/* Tables -------------------------------------------------------------------------------- */
+
+table {
+	font-family:"Noto Sans";
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+td {
+	text-align: left;
+}
+
+hr {
+	max-width: 960px;
+}
+
+ul {
+	padding-left: 20px;
+}
+
+.projectTitle {
+	font-size: 26px;
+	color: #1a89ff;
+}
+
+.sectionTitle {
+	font-size: 20px;
+	color: #1a89ff;
+}
+
+.infoHeader {
+	text-decoration: underline;
+}
+
+/* Content ------------------------------------------------------------------------------- */
+
+#portfolioSplash, #aboutSplash, #contactSplash {
+	height: 100px;
+	margin: 0;
+	padding: 80px 0 50px 0;
+}
+
+#portfolioContent, #aboutContent, #contactContent { 
+	background-color: #fff;
+	color: #333333;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 80px 0 100px 0;
+}
+
+#portfolioSplash {
+	background: #1a89ff url('../media/tile.png') 10px 20px/50px 50px fixed;
+	padding: 180px 0 50px 0;
+}
+
+#portfolioContent {
+	text-align: center;
+}
+
+#portfolioContent a:link, #portfolioContent a:visited { color: #1460b3; }
+#portfolioContent a:hover { color: #73adeb; }
+#portfolioContent a:active { color: #abd4ff; }
+
+#aboutSplash {
+	background: #ff1a65 url('../media/tile.png') 10px 20px/50px 50px fixed;
+}
+
+#aboutContent {
+	text-align: left;
+	max-width: 960px;
+	padding: 100px 50px 100px 50px;
+}
+
+#contactSplash {
+	background: #1aff8b url('../media/tile.png') 10px 20px/50px 50px fixed;
+}
+
+#contactContent {
+	text-align: center;
+}
+
+#contactContent a:link, #contactContent a:visited { color: #14b362; }
+#contactContent a:hover { color: #74ebaf; }
+#contactContent a:active { color: #acffd5; }

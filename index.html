@@ -11,14 +11,15 @@
    
 <script>
 $(document).ready(function() {
+// Scroll to the correct splash area when the corresponding text is clicked on the navigation bar -----------------------------
 	$('a[href*=#]:not([href=#])').each(function() {
     	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       		var target = $(this.hash);
       		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       		if (target) {
 		        $(this).click(function() {
-		           	if(this.title == "About"){
-						$('html, body').animate({scrollTop: target.offset().top-100}, 1000);
+		           	if(this.title == "About" || "Skills") {
+						$('html, body').animate({scrollTop: target.offset().top-60}, 1000);
 					}
 					else {
 						$('html, body').animate({scrollTop: target.offset().top}, 1000);
@@ -26,15 +27,22 @@ $(document).ready(function() {
 		           	return false;
 				});
 				
+// Update which item in the navigation bar is marked as active ----------------------------------------------------------------
 				$(window).on('scroll',function() {
 					var windowBottom = $(window).scrollTop() + $(window).height();
 					if(target.attr('id') == 'portfolioSplash') {
 						if ($(window).scrollTop() <= target.offset().top+100) {
 							$("#nav li a").removeClass("active");
-							$($("#nav li a").get(2)).addClass('active');
+							$($("#nav li a").get(3)).addClass('active');
 						}
 					}
 					if(target.attr('id') == 'aboutSplash') {
+						if ($(window).scrollTop() >= target.offset().top-100 && $(window).scrollTop() <= target.offset().top+100 && $(window).scrollTop() + $(window).height() < $(document).height()-50) {
+							$("#nav li a").removeClass("active");
+							$($("#nav li a").get(2)).addClass('active');
+						}
+					}
+					if(target.attr('id') == 'skillsSplash') {
 						if ($(window).scrollTop() >= target.offset().top-100 && $(window).scrollTop() <= target.offset().top+100 && $(window).scrollTop() + $(window).height() < $(document).height()-50) {
 							$("#nav li a").removeClass("active");
 							$($("#nav li a").get(1)).addClass('active');
@@ -51,6 +59,7 @@ $(document).ready(function() {
 		}
 	});
   
+// Close the accordion corresponding to the number plugged in -----------------------------------------------------------------
 	function closeAccordions(num) {
 		if($(".container" +String(num)+ " .content").css("display") == "block") {
 			$(".accordion" +String(num)).next().slideToggle(500);
@@ -62,13 +71,14 @@ $(document).ready(function() {
 		$content.slideToggle(500);
 	}
 	
+// Open the accordion for the item that is clicked and close any other open accordions in the same section --------------------
 	$(".Quartz").click(function () {
 		$accordian = $(".accordion1");
 		slideToggle();
 		closeAccordions(2);
 		closeAccordions(3);
-		closeAccordions(4);
 		closeAccordions(17);
+		closeAccordions(18);
 	});
 	
 	$(".AbandonedVessel").click(function () {
@@ -76,8 +86,8 @@ $(document).ready(function() {
 		slideToggle();
 		closeAccordions(1);
 		closeAccordions(3);
-		closeAccordions(4);
 		closeAccordions(17);
+		closeAccordions(18);
 	});
 	
 	$(".Scriptslayer").click(function () {
@@ -85,17 +95,8 @@ $(document).ready(function() {
 		slideToggle();
 		closeAccordions(1);
 		closeAccordions(2);
-		closeAccordions(4);
 		closeAccordions(17);
-	});
-	
-	$(".Aylkor").click(function () {
-		$accordian = $(".accordion4");
-		slideToggle();
-		closeAccordions(1);
-		closeAccordions(2);
-		closeAccordions(3);
-		closeAccordions(17);
+		closeAccordions(18);
 	});
 	
 	$(".Dragon").click(function () {
@@ -104,6 +105,10 @@ $(document).ready(function() {
 		closeAccordions(6);
 		closeAccordions(7);
 		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(21);
+		closeAccordions(23);
 	});
 	
 	$(".MajorasMask").click(function () {
@@ -112,6 +117,10 @@ $(document).ready(function() {
 		closeAccordions(5);
 		closeAccordions(7);
 		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(21);
+		closeAccordions(23);
 	});
 	
 	$(".BombFlower").click(function () {
@@ -120,6 +129,10 @@ $(document).ready(function() {
 		closeAccordions(5);
 		closeAccordions(6);
 		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(21);
+		closeAccordions(23);
 	});
 	
 	$(".ZombiecideCharacter").click(function () {
@@ -128,6 +141,10 @@ $(document).ready(function() {
 		closeAccordions(5);
 		closeAccordions(6);
 		closeAccordions(7);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(21);
+		closeAccordions(23);
 	});
 	
 	$(".Pikmin").click(function () {
@@ -136,6 +153,7 @@ $(document).ready(function() {
 		closeAccordions(10);
 		closeAccordions(11);
 		closeAccordions(12);
+		closeAccordions(22);
 	});
 	
 	$(".Deranged").click(function () {
@@ -144,6 +162,7 @@ $(document).ready(function() {
 		closeAccordions(9);
 		closeAccordions(11);
 		closeAccordions(12);
+		closeAccordions(22);
 	});
 	
 	$(".Ignition").click(function () {
@@ -152,6 +171,7 @@ $(document).ready(function() {
 		closeAccordions(9);
 		closeAccordions(10);
 		closeAccordions(12);
+		closeAccordions(22);
 	});
 	
 	$(".Grasp").click(function () {
@@ -160,6 +180,7 @@ $(document).ready(function() {
 		closeAccordions(9);
 		closeAccordions(10);
 		closeAccordions(11);
+		closeAccordions(22);
 	});
 	
 	$(".ProjectSpark").click(function () {
@@ -201,6 +222,73 @@ $(document).ready(function() {
 		closeAccordions(2);
 		closeAccordions(3);
 		closeAccordions(4);
+		closeAccordions(18);
+	});
+	
+	$(".SmashRoutes").click(function () {
+		$accordian = $(".accordion18");
+		slideToggle();
+		closeAccordions(1);
+		closeAccordions(2);
+		closeAccordions(3);
+		closeAccordions(17);
+	});
+	
+	$(".3DPokeballSprite").click(function () {
+		$accordian = $(".accordion19");
+		slideToggle();
+		closeAccordions(5);
+		closeAccordions(6);
+		closeAccordions(7);
+		closeAccordions(8);
+		closeAccordions(20);
+		closeAccordions(21);
+		closeAccordions(23);
+	});
+	
+	$(".3DMimikyuSprite").click(function () {
+		$accordian = $(".accordion20");
+		slideToggle();
+		closeAccordions(5);
+		closeAccordions(6);
+		closeAccordions(7);
+		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(21);
+		closeAccordions(23);
+	});
+	
+	$(".3DLittenSprite").click(function () {
+		$accordian = $(".accordion21");
+		slideToggle();
+		closeAccordions(5);
+		closeAccordions(6);
+		closeAccordions(7);
+		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(23);
+	});
+	
+	$(".SmashRoutesIcons").click(function () {
+		$accordian = $(".accordion22");
+		slideToggle();
+		closeAccordions(9);
+		closeAccordions(10);
+		closeAccordions(11);
+		closeAccordions(12);
+	});
+	
+	$(".Donuts").click(function () {
+		$accordian = $(".accordion23");
+		slideToggle();
+		closeAccordions(5);
+		closeAccordions(6);
+		closeAccordions(7);
+		closeAccordions(8);
+		closeAccordions(19);
+		closeAccordions(20);
+		closeAccordions(21);
 	});
 });
 </script>
@@ -209,1117 +297,657 @@ $(document).ready(function() {
 <body>
 <header id="header">
 <div class="headerContent">
-<div id="logo"><a href=""> Joseph Horsmann </a></div>
+<!-- Show JOSEPH HORSMANN in the header --------------------------------------------------------------------------------- -->
+<div id="logo"><a href="">Joseph Horsmann</a></div>
 
+<!-- List the items in the navigation bar at the top of the screen -------------------------------------------------------- -->
 <nav id="nav">
 	<ul>
-		<li><a  href="#contactSplash" title="Contact">Contact</a></li>
+		<li><a href="#contactSplash" title="Contact">Contact</a></li>
+		<li><a href="#skillsSplash" title="Skills">Skills</a></li>
 		<li><a href="#aboutSplash" title="About">About</a></li>
-		<li><a href="#portfolioSplash" class="active" title="Portfolio">Portfolio </a></li>
+		<li><a href="#portfolioSplash" class="active" title="Portfolio">Portfolio</a></li>
 	</ul>
 </nav>
 </div>
 </header>	
 
+<!-- Display the PORTFOLIO splash & give it text ------------------------------------------------------------------------- -->
 <div id="portfolioSplash">
 	<div class="content">
 		<h1>Portfolio</h1>
 	</div> 
 </div>
 
+<!-- Order & display the content of the GAMES section --------------------------------------------------------------------- -->
 <div id="portfolioContent">
-	<div class="content" >
+	<div class="content">
 		<h2>Games</h2>
 		<div id="mainwrapper">
 			<div class="box">
-				<span class="Equinox" ><img src="media/equinoxSmall.png" alt="Equinox"></span>
-				<span class="caption simple-caption"><p>Equinox</p></span>
+				<div class="imageBox">
+					<span class="SmashRoutes"><img src="media/SmashRoutes/preview.png" width="250" height="250" alt="Smash Routes"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Smash Routes</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="Quartz" ><img src="media/quartzSmall.png" alt="Quartz"></span>
-				<span class="caption simple-caption"><p>Quartz</p></span>
+				<div class="imageBox">
+					<span class="Equinox"><img src="media/Equinox/preview.png" alt="Equinox"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Equinox</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="Scriptslayer" ><img src="media/scriptslayerSmall.png" alt="Scriptslayer"></span>
-				<span class="caption simple-caption"><p>Scriptslayer</p></span>
+				<div class="imageBox">
+					<span class="Quartz"><img src="media/Quartz/preview.png" alt="Quartz"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Quartz</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="AbandonedVessel" ><img src="media/abandonedSmall.png" alt="An Abandoned Vessel"></span>
-				<span class="caption simple-caption"><p>An Abandoned Vessel</p></span>
+				<div class="imageBox">
+					<span class="Scriptslayer"><img src="media/Scriptslayer/preview.png" alt="Scriptslayer"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Scriptslayer</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="Aylkor" ><img src="media/aylkorSmall.png" alt="Remnants of Aylkor"></span>
-				<span class="caption simple-caption"><p>Remnants of Aylkor</p></span>
+				<div class="imageBox">
+					<span class="AbandonedVessel"><img src="media/AnAbandonedVessel/preview.png" alt="An Abandoned Vessel"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>An Abandoned Vessel</p></span>
+				</div>
 			</div>
 		</div>
 		
+<!-- Content for SMASH ROUTES --------------------------------------------------------------------------------------------- -->
+		<div class="container18">
+    		<div class="accordion18"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Smash Routes
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Unity, Photoshop, Amplify Shader Editor, Blender
+            	</h3>
+            	<br>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/Rj8ANq2PwI0" frameborder="0" allowfullscreen></iframe>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Made in Unity, <a href="https://www.smashroutes.com" target="_blank">Smash Routes</a>
+						is a mobile game where athletes, parents and coaches can test and improve their football knowledge and skills, learn their playbook and
+						track their progress as a player. My contributions to the Smash Routes app include designing and implementing game art, animations,
+						logos, UI, materials and shaders. Smash Routes is available now on the 
+						<a href="https://apps.apple.com/us/app/smash-routes/id1294352127" target="_blank">Apple App Store</a>, the
+						<a href="https://play.google.com/store/apps/details?id=com.CRSports.SMASHRoutes" target="_blank">Google Play Store</a> and the
+						<a href="https://www.amazon.com/dp/B07DV3XJHQ" target="_blank">Amazon Appstore</a>.
+						<br>
+						<br>
+						Smash Routes offers teams and leagues the ability to purchase a custom implementation of their playbook into the app. Users then
+						have access to an in-app team with a curriculum based off of that playbook, as well as several free offerings made available to all users.
+						In each curriculum, users have access the their digital playbook, containing combinations of plays and formations put together in a
+						playable format to help users learn and practice. Additionally, each curriculum includes other minigames and simulations used to teach
+						football content.
+						<br>
+						<br>
+						Users can check leaderboards to see how they stack up against other players and track their own top scores. Users also earn in-game
+						currency by playing the game, which can be spent in an in-game store to unlock icons to customize their profile. Coaches have additional
+						tools made available to them, including a digital whiteboard and in-depth stats and metrics for the players on their team.
+					</h3>
+					<hr>
+					<h5>
+						Additional Screenshots
+					</h5>
+					<br>
+					<table width="960" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/mainMenu.jpg" target="_blank"">
+										<img src="media/SmashRoutes/mainMenu.jpg" width="300" alt="Main Menu">
+									</a>
+								</span>
+							</td>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/playerHomeScreen.jpg" target="_blank"">
+										<img src="media/SmashRoutes/playerHomeScreen.jpg" width="300" alt="Player Home Screen">
+									</a>
+								</span>
+							</td>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/coachHomeScreen.jpg" target="_blank"">
+										<img src="media/SmashRoutes/coachHomeScreen.jpg" width="300" alt="Coach Home Screen">
+									</a>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/trialSelectScreen.jpg" target="_blank"">
+										<img src="media/SmashRoutes/trialSelectScreen.jpg" width="300" alt="Trial Select Screen">
+									</a>
+								</span>
+							</td>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/leaderboard.jpg" target="_blank"">
+										<img src="media/SmashRoutes/leaderboard.jpg" width="300" alt="Leaderboard">
+									</a>
+								</span>
+							</td>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/SmashRoutes/playerStatsScreen.jpg" target="_blank"">
+										<img src="media/SmashRoutes/playerStatsScreen.jpg" width="300" alt="Player Stats Screen">
+									</a>
+								</span>
+							</td>
+						</tr>
+                	</table>
+				</div>
+				<hr>
+    		</div>
+		</div>
+		
+<!-- Content for EQUINOX ------------------------------------------------------------------------------------------------- -->
 		<div class="container17">
     		<div class="accordion17"></div>
     		<div class="content">
-    		
-    			<br>
     			<hr>
-    			<br>
-            	<table width="960">
-                	<tr>
-                    	<td valign="top" width="250">
-							<span class="projectTitle">Equinox</span>
-							<br>
-							<br>
-							<span class="infoHeader">Tools Used:</span>
-							<br>
-							Unity, Maya, Photoshop
-							<br>
-							<br>
-							<span class="infoHeader">Language:</span>
-							<br>
-							UnityScript
-							<br>
-							<br>
-							<span class="infoHeader">Team Size:</span>
-							<br>
-							3
-							<br>
-							<br>
-							<span class="infoHeader">Contributions:</span>
-							<br>
-							Concept, level design, mechanical design, visual asset production, balancing
-                        </td>
-                        <td valign="top" width="250">
-                        	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/0xDCzR5LOZs" frameborder="0" allowfullscreen></iframe>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Overview</span>
-							<br>
-							<br>
-							Equinox features 2 player combat in a single space-installation environment. Players are able to move around freely in 3D space
-							and collect upgrades found around the stage. Collecting these upgrades will upgrade one of three pieces of equipment, the player’s
-							weapon, ship body, or engine. Each of these three pieces of equipment have two different upgrades that can be found. Players can
-							also swap out any of these upgrades if they so desire by finding and collecting another upgrade. In addition to shooting whatever
-							weapon the player currently has equipped, players will also be granted additional abilities from any body or engine upgrades they
-							pick up. Beyond upgrading, players’ goals are to shoot down and defeat the other player, earning points to win the game.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Goals</span>
-							<br>
-							<ul>
-								<li>Create a competitive shooter with upgrading elements</li>
-							  	<li>Effectively balance player progression and ability paths</li>
-								<li>Utilize a visual style with vibrant lights that stand out from darker areas</li>
-								<li>Make navigation and spacial awareness easy for players</li>
-							</ul>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Detailed Information</span>
-							<br>
-							<br>
-							The initial guiding concept for Equinox was laser tag. This informed both the decision to work on a competitive shooter game as
-							well as the visual direction of the game, contrastig lit areas and objects with darker scenery. To differentiate Equinox from the
-							vanilla shooter formula and and add more to the gameplay sandbox, abilities were added. With the same goal of expanding the options
-							available to players at any given time, it was decided to work with a sci-fi, space theme. This tied in nicely with our visual
-							style established thus far, as well as opening an avenue with which players could move more freely; having players play as
-							mechanical space-ship-like constructs.
-							<br>
-							<br>
-							The game begins with players positioned on oposite sides of the arena. Players each tasked with shooting down the other a total of
-							five times in order to win the game, before the other can do so. To help them along in this task, players can collect various
-							upgrades that are scattered around the map. Each upgrade will improve one of three pieces of equipment on the player's ship:
-							the ship’s weapon, the ship's body, or the ship's engine. For each of these three different pieces of equipment, two different
-							upgrades are available, each with its own advantages or disadvantages. Players can also swap out equipment at any point by
-							finding and collecting an alternate upgrade. The weapon, which fires 'standard' shots can be upgraded to a 'spray' variant that
-							fires faster but less accurately, or a 'missile' variant which fires slower but does more damage. The body can be upgraded to
-							have either a shield ability, which will grant a player temporary invincibility, or to have a regeneration ability, which will
-							regenerate the player's health over time at the price of haver a lower maximum health. The engine can be upgraded to a 'bounce'
-							variant which grants a burst of speed when bumping into an obstacle or a 'slide' variant that offers quicker directional
-							rotation capabilities.
-							<br>
-							<br>
-							In making a game that offered full 3D movement, it was important to ensure that players were able to maintain orientation and were
-							able to successfully navigate the game. Keeping this in mind, an auto-orientation feature was added early on that would keep players
-							oriented to the ground, helping to prevent them from getting spatially confused. After playtesting and feedback, other usability
-							options were added, such as the ability to strafe and tweaks to the level to help maintain clear, distinctive boundaries.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Level Design</span>
-							<br>
-							<br>
-							The play space for Equinox went through a fair number of iterations of the course of its development. The map began as a fully
-							spherical environment, populated with various obstacles and terrain. However, it was quickly determined that a completely spherical
-							play space felt both awkwardly populated and made it easy to become disorientated. After this revelation, it was decided to work
-							with a hemisphere as a playspace, rather than an entire sphere. It was also decided to give the play space an arena sort of feel,
-							with a clear top and bottom. The arena play space was also iterated on a number of times. Most significantly, the various
-							protrusions around the level were moved around, changed to become more distinct and assist with navigation, and broken up into
-							smaller pieces, to allow players to weave in and out of them. The central column went through a similar fragmentation, and was also
-							made to rotate, creation more evasion opportunities. Additionally, a central area was added beneath the pillar, with four entrances
-							on the sides and one on the top. A ring was also added around the edge of the arena, with parts of it covered to varying degrees,
-							creating another path of movement through the play space.
-							<br>
-							<br>
-							Found below are the initial and final implementations of the hemispherical arena. Each is shown in wireframe from top, bottom,
-							profile, and finally with faces filled.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-							<span class="sectionTitle">
-								<a href="media/equinox_level_1.png" target="_blank"">
-									<img src="media/equinox_level_1.png" width="450" alt="Equinox Prototype Level">
-								</a>
-							</span>
-                        </td>
-                        <td valign="top">
-							<span class="sectionTitle">
-								<a href="media/equinox_level_2.png" target="_blank">
-									<img src="media/equinox_level_2.png" width="450" alt="Equinox Final Level">
-								</a>
-							</span>
-                        </td>
-                    </tr>
-                </table>
-                         
+            	<h4>
+            		Equinox
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Unity, Maya, Photoshop
+            	</h3>
+            	<br>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/nqTZb89gJ80" frameborder="0" allowfullscreen></iframe>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Made in Unity, Equinox is a two player, competitive, space-shooter game. I worked on this game with friends who coded the game in
+						Unityscript, while I did the art, including UI, modeling, material design and texturing as well as level design and mechanical design.
+						<br>
+						<br>
+						Equinox features networked, first-person shooter gameplay, taking place in an enclosed arena. Players are able to move around freely in
+						3D space and collect upgrades that will enhance their weapons, armor, or engines. Players can move forward in the direction they're facing
+						or strafe from side to side. Players will also be auto-oriented to the ground to prevent confusion. Players' goals are to shoot down and
+						defeat the other player, earning a total of five points to win the game.
+						<br>
+						<br>
+						The projectile weapon's basic shots can be upgraded into either a spray variant that fires faster with less accuracy, or a missile
+						variant which fires slowly and does more damage. The armor can be upgraded to give the player either a shield ability that grants
+						temporary invincibility, or a regeneration ability that will regenerate the player's health over time at the price of having a lower
+						maximum health. The engine can be upgraded to a bounce variant which grants a burst of speed when bumping into an obstacle or a slide
+						variant that offers quicker directional rotation capabilities.
+					</h3>
+				</div>
+				<hr>
     		</div>
 		</div>
 		
+<!-- Content for QUARTZ ------------------------------------------------------------------------------------------------- -->
 		<div class="container1">
     		<div class="accordion1"></div>
     		<div class="content">
-    		
-    			<br>
     			<hr>
-    			<br>
-            	<table width="960">
-                	<tr>
-                    	<td valign="top" width="250">
-							<span class="projectTitle">Quartz</span>
-							<br>
-							<br>
-							<span class="infoHeader">Tools Used:</span>
-							<br>
-							Unity, Maya, Photoshop
-							<br>
-							<br>
-							<span class="infoHeader">Language:</span>
-							<br>
-							UnityScript
-							<br>
-							<br>
-							<span class="infoHeader">Team Size:</span>
-							<br>
-							4
-							<br>
-							<br>
-							<span class="infoHeader">Contributions:</span>
-							<br>
-							Concept, team lead, level design, mechanical design, visual asset production
-                        </td>
-                        <td valign="top" width="250">
-                        	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/6YxDz-Q6f8c" frameborder="0" allowfullscreen></iframe>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Overview</span>
-							<br>
-							<br>
-							Quartz is a 3D platforming game built in Unity. Quartz features a simple, yet attractive crystalline aesthetic, making use of
-							bright and exciting colors to create vibrant and visually entertaining experience. The game has players take control of a small,
-							crystalline ball capable of rolling around and jumping. Envisioned in the style of 3D collectathon platformers, players are
-							tasked with navigating platforming challenges and avoiding various obstacles while collecting 200 gems as their ultimate goal to
-							complete the level.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Goals</span>
-							<br>
-							<ul>
-								<li>Utilize a simple, yet attractive visual style</li>
-							  	<li>Offer tight and responsive controls</li>
-								<li>Effectively incentivize player collection and exploration</li>
-								<li>Create a playspace with varied challenges</li>
-							</ul>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Detailed Information</span>
-							<br>
-							<br>
-							With a time restriction of five weeks, Quartz was intended to be small in scope from the beginning, more of a proof of concept than
-							a fully realized game. One initial idea that was quickly scrapped to help keep the project in scope was including different forms
-							for the player character to shift between. These different forms would have taken on different geometric shapes and offered
-							offered different advantages and disadvantages in terms of movement capabilities. Although this idea was not implemented into the
-							game, some of these ideas lived on in various ways, such as the cubic and triangular enemies, as well as the icy terrain
-							found in the blue area.
-							<br>
-							<br>
-							In its current state, Quartz contains one level comprised of a central hub area and three surrounding areas, each themed differently
-							and containing unique mechanics and challenges. Players must collect 200 gems placed throughout the hub area and surrounding areas.
-							Doing so will cause a staircase to rise out of the central platform of the hub area, leading to the end of the level. The red area
-							features rising lava and platforms that will rise along with it, as well as cannons that will shoot the player to various locations.
-							The blue area features slippery platforms, platforms that crumble under the players weight and bumper-like enemies that bounce the
-							player away when touched. The yellow area features enemies that will try to crush the player as well as moving and rotating
-							platforms.
-							<br>
-							<br>
-							In addition to keeping things simple, it was also decided early on that having well-designed controls was of key importance. This
-							could be said to be a necessity for any platforming game, but particularly so when rolling a ball around. Working in a playspace
-							comprised of floating platforms in open space, nothing would ruin the experience faster than accidentally rolling off the edge
-							constantly. With this in mind, Quartz was designed to be played with a controller, rather than a keyboard.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Level Design</span>
-							<br>
-							<br>
-							Quartz's playspace changed little from its initial iteration to its final implementation. The key idea of having a central hub
-							surrounded by three unique areas was decided upon early in development, as part of an effort to keep the project simple and in scope.
-							Changes from the initial design were mostly limited to adjusting the size and positioning of platforms in each of the areas, as well
-							as fully committing to a hexagonal design for platforms. The placement of the collectable gems was also not determined until later
-							iterations of the level.
-							<br>
-							<br>
-							Shown below on the left and right respectively are the initial level sketch and a top-down view of the final level. On the sketch,
-							interact-able elements such as cannons, enemies, and the stairs to the end of the level are shown in red, while potential player
-							paths are shown in blue.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-							<span class="sectionTitle">
-								<a href="media/quartz_level_1.png" target="_blank"">
-									<img src="media/quartz_level_1.png" width="350" alt="Quartz Level Sketch">
-								</a>
-							</span>
-                        </td>
-                        <td valign="top">
-							<span class="sectionTitle">
-								<a href="media/quartz_level_2.png" target="_blank">
-									<img src="media/quartz_level_2.png" width="450" alt="Quartz Final Level">
-								</a>
-							</span>
-                        </td>
-                    </tr>
-                </table>
-                         
+            	<h4>
+            		Quartz
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Unity, Maya, Photoshop
+            	</h3>
+            	<br>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/OlVRh66TtvE" frameborder="0" allowfullscreen></iframe>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Made in Unity, Quartz is a 3D platformer game. I worked on this game, over the course of five weeks, with friends who coded the game in
+						Unityscript, while I did the art, including UI, modeling, material design and texturing as well as level design and mechanical design.
+						<br>
+						<br>
+						Quartz has players take control of a small, crystalline orb capable of rolling around and jumping. In the style of collect-a-thon
+						platformers, players are tasked with navigating platforming challenges and avoiding various obstacles while collecting 200 gems as their
+						ultimate goal to complete the level.
+						<br>
+						<br>
+						The playspace contains a central hub and three surrounding areas, each with their own unique mechanics and challenges. The red area
+						features rising lava and platforms that will rise and fall along with it, as well as cannons that will shoot the player to various
+						locations. The blue area features slippery platforms, crumbling platforms and bumper enemies that bounce the player away when touched.
+						The yellow area features sand pits, moving and rotating platforms and enemies that will attempt to crush the player.
+					</h3>
+				</div>
+				<hr>
     		</div>
 		</div>
 		
+<!-- Content for SCRIPTSLAYER --------------------------------------------------------------------------------------------- -->
 		<div class="container3">
     		<div class="accordion3"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
-            	<table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top" width="250">
-							<span class="projectTitle">Scriptslayer</span>
-							<br>
-							<br>
-							<span class="infoHeader">Tools Used:</span>
-							<br>
-							TextWrangler, Photoshop
-							<br>
-							<br>
-							<span class="infoHeader">Language:</span>
-							<br>
-							HTML5, Phaser
-							<br>
-							<br>
-							<span class="infoHeader">Team Size:</span>
-							<br>
-							1
-							<br>
-							<br>
-							<span class="infoHeader">Contributions:</span>
-							<br>
-							Concept, mechanical design, programming, balancing, asset assembly
-                        </td>
-                        <td valign="top" width="250">
-                        	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/CGgcT4eEDuQ" frameborder="0" allowfullscreen></iframe>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Overview</span>
-							<br>
-							<br>
-							Scriptslayer is a 2D hybrid RPG, puzzle, and typing game built in HTML5 with the Phaser framework. Players wander a dungeon fighting
-							off enemies and unlocking the ability to progress further after defeating a certain amount. The player's progress throughout the
-							dungeon overworld is periodically interrupted by RPG-style random encounters with various monsters that the player must defeat to
-							continue onwards. Combat takes the form of an interface in which the player must type verbs to battle the enemies they come across.
-							Players can make stronger attacks by taking advantage of a variety of special weaknesses each enemy has, as well as typing faster
-							and reusing words fewer times.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Goals</span>
-							<br>
-							<ul>
-								<li>Create a game based off of a fresh idea and unique mechanics</li>
-							  	<li>Utilize a cohesive user interface that is and quickly understandable at a glance</li>
-								<li>Include a wide variety of special weakness words that can be easily thought of and discovered by players</li>
-							</ul>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Detailed Information</span>
-							<br>
-							<br>
-							A majority of Scriptslayer's gameplay takes place in the typing-combat sequences, with the overworld acting as more of a framework
-							and incentive to play long enough to experience a variety of enemies. Players can complete the game after making it through three
-							rooms, but may fight as many enemies as they wish or are able to before dying in order to achieve a higher high score.
-							<br>
-							<br>
-							At the beginning of the game, players have a default attack of 100, with enemies each having 400 health. Players can receive
-							multipliers to their damage output by meeting certain criteria each turn of combat. First an formost among these is by typing a
-							verb that takes advantage of an enemy's weakness, which awards a 2x bonus to the players attack. Some examples of weaknesses found
-							within the game are typing COOK or BUTTER against a lobster enemy, typing BURN or PRUNE against a plant enemy, or typing POKE or
-							BLIND against an eyeball enemy. Enemies are designed to have a number of fairly obvious weaknesses that fall within the realm of
-							general knowledge and common association. In addition to exploiting enemy weaknesses, players will earn a multiplayer based on the
-							time bar that decays over the player's turn. Typing an attack quickly will raise the player's score, in varying amounts, while
-							failing to type anything before time runs out will result in a loss of action for that turn and a retaliating attack by the enemy.
-							Additionally, players will be penalized with a negative multiplier for typing the same verb in succession, encouraging quick
-							thinking and variety amongst the players responses. Finally, in each battle, players will be presented with a condition dictating
-							that they use a minimum number of letters when typing a verb, with lower numbers being more common.
-							<br>
-							<br>
-							In addition to the player's health and score, other elements will persist between battles. The number of times a verb has been used
-							is tracked between battles, although this is reset upon entering a new area. Additionally, the player's base attack and defense
-							persist throughout battles, and have a chance of increasing after defeating an enemy.
-							<br>
-							<br>
-							Because the programming and mechanical design of the game itself was of chief importance for this project, visual assets were
-							borrowed and edited from existing sprites, rather than being created from scratch.
-                        </td>
-                    </tr>
-                </table>
-
+            	<h4>
+            		Scriptslayer
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Photoshop, HTML, Phaser
+            	</h3>
+            	<br>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/RWKb1V0fb9U" frameborder="0" allowfullscreen></iframe>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Made in HTML and Phaser, Scriptslayer is 2D hybrid RPG-puzzle game based around typing mechanics. Some visual assets for this project
+						were edited from existing sprites.
+						<br>
+						<br>
+						In Scriptslayer, players wander a dungeon fighting off enemies and unlocking the ability to progress further after defeating a certain
+						number. As players move through the overworld, they will periodically encounter monsters that they must defeat. Combat uses an
+						active-time-battle approach, where a turn-based system is augmented with timed elements. Players have a certain amount of time to enter a
+						verb to damage the enemy they're battling.
+						<br>
+						<br>
+						In combat, players can also add multiplier bonuses to their attacks by taking advantage of a variety of special weaknesses each enemy
+						has. For example, a player can earn an attack bonus by typing COOK against a lobster enemy or BURN against a plant enemy. Players will
+						earn a multiplayer based on the time bar that decays over the course of the player's turn. Typing an attack quickly will raise the
+						player's score, in varying amounts, while failing to type anything before time runs out will result in a loss of action for that turn and
+						a retaliating attack by the enemy. Additionally, players will be penalized with a negative multiplier for typing the same verb in
+						succession, encouraging quick thinking and variety amongst responses. In each battle, players will also be presented with a condition
+						dictating that they use a minimum number of letters when typing, with lower numbers being more common.
+						<br>
+						<br>
+						Players' health and score will persist between battles. The number of times a verb has been used is also tracked between battles,
+						although this is reset upon entering a new area. Additionally, the player's base attack and defense persist throughout battles, and have
+						a chance of increasing after defeating an enemy.
+					</h3>
+				</div>
+				<hr>
     		</div>
 		</div>
 		
+<!-- Content for AN ABANDONED VESSEL ------------------------------------------------------------------------------------- -->
 		<div class="container2">
     		<div class="accordion2"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
-            	<table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top" width="250">
-							<span class="projectTitle">An Abandoned Vessel</span>
-							<br>
-							<br>
-							<span class="infoHeader">Tools Used:</span>
-							<br>
-							Unity, Photoshop
-							<br>
-							<br>
-							<span class="infoHeader">Language:</span>
-							<br>
-							UnityScript
-							<br>
-							<br>
-							<span class="infoHeader">Team Size:</span>
-							<br>
-							4
-							<br>
-							<br>
-							<span class="infoHeader">Contributions:</span>
-							<br>
-							Concept, mechanical design, visual asset production
-                        </td>
-                        <td valign="top" width="250">
-                        	<a href="media/abandoned_screen_1.png" target="_blank">
-								<img src="media/abandoned_screen_1.png" width="600" alt="An Abandoned Vessel Screenshot">
-							</a>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Overview</span>
-							<br>
-							<br>
-							An Abandoned Vessel is a 2D, top-down shooter built in Unity. In this game, the player character finds themselves stranded on a
-							derelict space station, infested with decaying alien zombies and with very little power remaining. The player must shoot their way
-							through the aliens, navigating through procedurally generated areas by way of teleporter. Additionally, light is scarce and players
-							must make use of their gun and flares that can be found around the space station to increase their field of vision.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Goals</span>
-							<br>
-							<ul>
-								<li>Create an abandoned, lonely mood and tone with visuals, lighting and sound</li>
-							  	<li>Use the presence or absence of light to influence and inform player choices</li>
-							  	<li>Create a satisfying horde experience in procedurally generated environments</li>
-							</ul>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Detailed Information</span>
-							<br>
-							<br>
-							When beginning An Abandoned Vessel, the player has the ability to move around and shoot in any direction with their mouse. Soon
-							after, players will find health med-packs that can be used to restore health and flairs that can be placed on the ground to create
-							additional light. Both of these resources are limited, but players will find more as they continue to play. To help familiarize
-							players with these mechanics and others, players are guided through a few short tutorial areas that sequentially introduce them
-							to movement, items, enemies, and hazards.
-							<br>
-							<br>
-							After completing the tutorial areas, players enter into the main portion of the game where they must survive and shoot their way
-							through hordes of enemies. Players will need to defeat all of the enemies within an area to activate a teleporter that will take
-							them to the next area. In addition the enemies and hazards, such as slippery floors and spike traps found within each area, players
-							will be able to find a few pickups to help replenish their supplies if they explore thoroughly.
-							<br>
-							<br>
-							In addition to a the light produced by the player's suit and a few sparely placed ambient lights, the player must create their own
-							light, either by shooting bullets from their gun, or by placing flares. Bullets can be fired relatively quickly, but only produce a
-							small amount of light. This is moderately effective in lighting a small line directly in front of the player, but fails to light
-							a wider area. To accomplish this, players will need to use a flare, which will light an area in a radius around it. With a limited
-							amount of resources, players will need to be careful when navigating the station and manage their resources carefully.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Additional Screenshots</span>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-							<span class="sectionTitle">
-								<a href="media/abandoned_screen_2.png" target="_blank"">
-									<img src="media/abandoned_screen_2.png" width="450" alt="An Abandoned Vessel Screenshot">
-								</a>
-							</span>
-                        </td>
-                        <td valign="top">
-							<span class="sectionTitle">
-								<a href="media/abandoned_screen_3.png" target="_blank">
-									<img src="media/abandoned_screen_3.png" width="450" alt="An Abandoned Vessel Screenshot">
-								</a>
-							</span>
-                        </td>
-                    </tr>
-                </table>
-        		
-    		</div>
-		</div>
-		
-		<div class="container4">
-    		<div class="accordion4"></div>
-    		<div class="content">
-        		
-        		<br>
-    			<hr>
-    			<br>
-            	<table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top" width="250">
-							<span class="projectTitle">Remnants of Aylkor</span>
-							<br>
-							<br>
-							<span class="infoHeader">Tools Used:</span>
-							<br>
-							Photoshop
-							<br>
-							<br>
-							<span class="infoHeader">Language:</span>
-							<br>
-							N/A (Physically based)
-							<br>
-							<br>
-							<span class="infoHeader">Team Size:</span>
-							<br>
-							4
-							<br>
-							<br>
-							<span class="infoHeader">Contributions:</span>
-							<br>
-							Concept, mechanical design, balancing, card design, card production
-                        </td>
-                        <td valign="top" width="250">
-                        	<a href="media/aylkor_board.png" target="_blank">
-								<img src="media/aylkor_board.png" height="340" alt="An Abandoned Vessel Screenshot">
-							</a>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Overview</span>
-							<br>
-							<br>
-							Remnants of Aylkor is a card battle game for two to four players that is played on a game board. Each player has a deck of 50 cards
-							as well as an additional hero unit card. There is also a neutral event card deck comprised of 16 cards. Finally, dice are needed as
-							well as a number of tokens to keep track of the game's two resources, Cogs and Brew, as well of the health of player's unit cards.
-							Players wage war against each other on the hexagonal-tiled game board and must effectively manage their resources and unit and tech
-							cards to overcome their enemies and keep their hero unit alive while defeating any other hero units.
-                        </td>
-                    </tr>
-                </table>
-                <br>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Project Goals</span>
-							<br>
-							<ul>
-								<li>Create a physically based game with card battle and tactical elements</li>
-							  	<li>Create a sample of cards with a variety of stats and effects</li>
-								<li>Comfortably support two to four players</li>
-								<li>Balance cards and effects, resource collection and tactical elements to mesh well together</li>
-							</ul>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <table width="960" border="0" cellspacing="0" cellpadding="0">
-                	<tr>
-                    	<td valign="top">
-                    		<br>
-							<span class="sectionTitle">Detailed Information</span>
-							<br>
-							<br>
-							Players take turns making actions with and moving their cards about the board. On a player's turn a number of different actions are
-							available to be taken, including playing, building and moving units, activating units' abilities or tech cards, harvesting
-							resources, and attacking hostile units. Players also draw one new card from their deck each turn. Some available actions are
-							limited to one per turn, while others are limited by the amount of resources the player has. Players can conduct battle between
-							their units and enemy units. When a unit depletes an enemy unit's health, that unit is destroyed. Additionally, there are three
-							types of units, Organic, Mechanical and Elemental, as well as a fourth neutral type which is populated by Hero Units. The three
-							types of units fall into a rock, paper, scissors trinity. Organic units are effective against Mechanical units, Mechanical units
-							are effective against Elemental units, and Elemental units are effective against Organic units.
-							<br>
-							<br>
-							A more detailed and look at the procedures, mechanics and rules of the game can be found in the comprehensive rules document
-							located below.
-							<br>
-							<br>
-							<a href="media/aylkor_rules.pdf" target="_blank">Remnants of Aylkor - Rules</a>
-                        </td>
-                    </tr>
-                </table>
-        		
-    		</div>
-		</div>
-		
-		<h2>Level Design</h2>
-		<div id="mainwrapper">
-			<div id="box-1" class="box">
-				<span class="ProjectSpark" ><img src="media/sparkSmall.png" alt="Project Spark Platformer Level"></span>
-				<span class="caption simple-caption"><p>Project Spark Platformer Level</p></span>
-			</div>
-			
-			<div id="box-2" class="box">
-				<span class="Halo4" ><img src="media/haloSmall.png" alt="Halo 4 Map"></span>
-				<span class="caption simple-caption"><p>Halo 4 Multiplayer Map</p></span>
-			</div>
-			
-			<div id="box-2" class="box">
-				<span class="MinecraftZelda" ><img src="media/zeldaSmall.png" alt="Minecraft Zelda Dungeon"></span>
-				<span class="caption simple-caption"><p>Minecraft Zelda Dungeon</p></span>
-			</div>
-			
-			<div id="box-2" class="box">
-				<span class="MarioMaker" ><img src="media/marioSmall.png" alt="Mario Maker Level"></span>
-				<span class="caption simple-caption"><p>Mario Maker Level</p></span>
-			</div>
-		</div>
-		
-		<div class="container13">
-    		<div class="accordion13"></div>
-    		<div class="content">
-    		
-    			<br>
-    			<hr>
-    			<br>
             	<h4>
-            		Project Spark Platformer Level
+            		An Abandoned Vessel
             	</h4>
             	<h3>
-            		<br>
             		<span class="infoHeader">Tools Used:</span>
 					<br>
-					Project Spark (Xbox One)
-					<br>
-					<br>
+					Unity, Photoshop
             	</h3>
-            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/1KVq4YakTIs" frameborder="0" allowfullscreen></iframe>
             	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+            	<a href="media/AnAbandonedVessel/abandoned_screen_1.png" target="_blank">
+					<img src="media/AnAbandonedVessel/abandoned_screen_1.png" width="600" alt="An Abandoned Vessel Screenshot">
+				</a>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This project was an exercise in creating a 2D platformer level. I chose to use Project Spark for this project because it provided an
-						avenue to easily put together a level with pre-made pieces. I chose to make my level somewhat in the style of a Metroidvania game,
-						though as it is fairly small in scope, it is fairly straightforward and meant to be reminiscent of an area that would be found early in
-						a game.
+						Made in Unity, An Abandoned Vessel is a 2D, top-down shooter game. I worked on this game, over the course of five weeks, with friends who
+						coded the game in Unityscript, while I did the art, including UI, backgrounds and sprites.
 						<br>
 						<br>
-						The player character can run and jump by default, but like any Metroidvania game, players can bolster their arsenal of abilities by
-						collecting upgrades found throughout the game. Almost immediately upon starting the level, players gain the ability to shoot fireballs,
-						which act as their primary form of attack. Players can shoot either directly ahead, or diagonally up or down. Later on, players gain a
-						dash ability, allowing them to achieve quick horizontal movement and navigate large gaps or hazards. Finally, players can gain a
-						stronger dash that allows them to break through stone blocks and damage enemies with their dash.
+						In An Abandoned Vessel, the player must navigate a derelict space station, infested with alien zombies and with very little remaining
+						power. The player must shoot their way through the aliens and survive procedurally generated levels. Light is also scarce and players
+						must make use of their gun and flares that can be found around the space station to increase their field of vision.
 						<br>
 						<br>
-						The player will encounter a few different types of enemies throughout the level. Found first and most commonly are goblin enemies.
-						These act as the standard fodder of the game, and will attack the player with melee attacks. Encountered next are flying bird enemies,
-						which will hover around the player once they enter their range and periodically peck at them. Found less commonly are larger goblin
-						enemies, which will remain in place and hurl magic attacks at the player. Finally, once they reach the end of the level, players will
-						have to defeat a large golem enemy, which will attack the player with multiple projectile attacks.
-						<br>
-						<br>
-						As this level is somewhat of a microcosm of a Metroidvania level, I made sure to include essential elements to a successful
-						Metroidvania experience. First, and arguably most importantly, I made sure that players are forced to learn each new upgrade they find
-						to progress onwards in the game. After finding the fireball ability, players must use it to destroy boxes before progressing. The dash
-						must be used to cross a gap, and the upgraded dash must be used to destroy a stone block. I also included reasons and paths for players
-						to backtrack through the level and retread old ground with their upgraded arsenal, giving them a feeling of progression and power as
-						well as making the game space feel more connected. This was a major contributing factor to the direction I went with my aesthetic; I
-						felt that a honeycombed ruins setting would feel at home with a Metroidvania play style.
-						<br>
-						<br>
-						A layout for the initial iteration of the level can be seen below.
-						<br>
-						<br>
-						<a href="media/project_spark_level.png" target="_blank">
-							<img src="media/project_spark_level.png" width="450" alt="Project Spark Level">
-						</a>
+						Players can acquire health med-packs that can be used to restore health and flairs that can be placed on the ground to create
+						additional light. Both of these resources are limited, but players will find more as they continue to play and explore. To progress to
+						each new area, players will need to defeat all of the enemies within an area to activate a teleporter. Each area also features hazards,
+						such as slippery floors and spike traps that players will need to avoid.
 					</h3>
-					<br>
-            	</div>
-            	
-    		</div>
-		</div>
-		
-		<div class="container14">
-    		<div class="accordion14"></div>
-    		<div class="content">
-    		
-    			<br>
-    			<hr>
-    			<br>
-            	<h4>
-            		Halo 4 Multiplayer Map
-            	</h4>
-            	<h3>
-            		<br>
-            		<span class="infoHeader">Tools Used:</span>
-					<br>
-					Halo: The Master Chief Collection - Halo 4 - Forge Mode (Xbox One)
-					<br>
-					<br>
-            	</h3>
-            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/rOGQA2PKiBE" frameborder="0" allowfullscreen></iframe>
-            	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<hr>
 					<h5>
-						Project Overview
+						Additional Screenshots
 					</h5>
 					<br>
-					<h3>
-						Halo is a series I have a lot of investment in and experience with and was a familiar space for me to work within. This multiplayer map
-						was designed from the ground up, primarily intended for the Slayer and Team Slayer gametypes, with four to eight players in mind,
-						although it could comfortably support other gamemodes and numbers of players.
-						<br>
-						<br>
-						The inspiration for this level came primarily from more vertical maps, such as Halo 2's Midship or Halo 4's Adrift. Although Halo 4
-						supports multiple Armor Abilities, offering a wider range of options to players, I chose to design this map for a more classic Halo
-						gameplay experience, where the only Armor Ability offered to players is Sprint. Likewise, players are restricted in terms of weapons.
-						Rather than being able to choose from load-outs, players start with an Assault Rifle and a Pistol, and have to find other weapons
-						scattered around the map. Weapon balancing was an important factor to consider when designing the map. As a result, power weapons are
-						located in central, neutral locations and are relatively few in number, where less devastating weapons are more abundant.
-						<br>
-						<br>
-						Lines of sight and confrontational hotspots were of key importance to my design process. Most central areas are broken up to some
-						degree, with obstacles intentionally placed to at least partially obscure lines of sight, with the exception of the open top area, which
-						is intentionally dangerous to linger in. I also wanted to provide players with many different options to navigate around the level. In
-						addition to cycling through the three different vertical tiers of the level, the middle and bottom level feature a number of tunnels
-						that lead in and out of each other, as well as the central areas.
-						<br>
-						<br>
-						A layout for the initial iteration of the level can be seen below.
-						<br>
-						<br>
-						<a href="media/halo_level.png" target="_blank">
-							<img src="media/halo_level.png" width="450" alt="Halo 4 Map">
-						</a>
-					</h3>
-					<br>
-            	</div>
-            	
+					<table width="960" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/AnAbandonedVessel/abandoned_screen_2.png" target="_blank"">
+										<img src="media/AnAbandonedVessel/abandoned_screen_2.png" width="450" alt="An Abandoned Vessel Screenshot">
+									</a>
+								</span>
+							</td>
+							<td valign="top">
+								<span class="sectionTitle">
+									<a href="media/AnAbandonedVessel/abandoned_screen_3.png" target="_blank">
+										<img src="media/AnAbandonedVessel/abandoned_screen_3.png" width="450" alt="An Abandoned Vessel Screenshot">
+									</a>
+								</span>
+							</td>
+						</tr>
+                	</table>
+				</div>
+				<hr>
     		</div>
 		</div>
-		
-		<div class="container15">
-    		<div class="accordion15"></div>
-    		<div class="content">
-    		
-    			<br>
-    			<hr>
-    			<br>
-            	<h4>
-            		Minecraft Zelda Dungeon
-            	</h4>
-            	<h3>
-            		<br>
-            		<span class="infoHeader">Tools Used:</span>
-					<br>
-					Minecraft (Mac)
-					<br>
-					<br>
-            	</h3>
-            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/cllsq2L2AbQ" frameborder="0" allowfullscreen></iframe>
-            	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-					<h5>
-						Project Overview
-					</h5>
-					<br>
-					<h3>
-						In this project, I wanted to make a dungeon in the style of those found in Legend of Zelda games. I determined Minecraft to be a good
-						tool that would allow me to create an approximation of a Zelda dungeon. Beyond what is available in the base game, I also found a
-						useful mod called Zelda Sword Skills that added additional functionalities to Minecraft, based off of various aspects of the Zelda
-						games. I also used a Zelda texture pack to help make the dungeon look more akin to that of a Zelda game.
-						<br>
-						<br>
-						Because this dungeon is built in Minecraft the game plays like Minecraft, but I made as many alterations as possible to make the game
-						feel as close to a Zelda game as it could. I equipped the player with a sword and shield, the basic staples of a Zelda game. Progressing
-						through the dungeon, players will eventually get a bow and arrows which can be used to shoot enemies and switches, a hookshot to latch
-						onto faraway markers, food items to heal with, and keys to open locked doors. In typical Zelda fashion, players will receive these items
-						from chests. Enemies that the player encounters will also appear familiar to Zelda fans. The Zelda Sword Skills mod has re-skinned
-						Minecraft enemies such as Skeletons, Bats, and Slimes into enemies from the Zelda series such as Stalfos, Keese and Chu-Chu's.
-						<br>
-						<br>
-						Another important aspect of Zelda games that I included into my Minecraft adaptation was the puzzles littered throughout dungeons.
-						Puzzles in my dungeon include defeating the enemies in a room, finding and hitting switches, logic puzzles, and making use of special
-						items such as the bow and arrows and the hookshot. Finally, after making their way through the dungeon, players are treated to a boss
-						battle, against witches re-skinned as Koume and Kotake from the Zelda games. With the help of the Zelda Sword Skills mod, I was able to
-						create a unique dungeon that successfully incorporates many elements of the Zelda games into a Minecraft setting.
-						<br>
-						<br>
-						A layout for the initial iteration of the level can be seen below.
-						<br>
-						<br>
-						<a href="media/zelda_level.png" target="_blank">
-							<img src="media/zelda_level.png" width="450" alt="Minecraft Zelda Level">
-						</a>
-					</h3>
-					<br>
-            	</div>
-            	
-    		</div>
-		</div>
-		
-		<div class="container16">
-    		<div class="accordion16"></div>
-    		<div class="content">
-    		
-    			<br>
-    			<hr>
-    			<br>
-            	<h4>
-            		Mario Maker Level
-            	</h4>
-            	<h3>
-            		<br>
-            		<span class="infoHeader">Tools Used:</span>
-					<br>
-					Mario Maker (Wii U)
-					<br>
-					<br>
-            	</h3>
-            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/KJCzw6uKjXs" frameborder="0" allowfullscreen></iframe>
-            	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-					<h5>
-						Project Overview
-					</h5>
-					<br>
-					<h3>
-						This project was an exercise in creating a realistic Mario level in the Mario Maker engine, with a partner. One of the popular trends
-						in Mario Maker seems to be creating levels that are almost unbearably hard, which is something we wanted to avoid with this level.
-						However, we still wanted to create a certain degree of challenge in our level, something that might feel at home in a secret world at
-						the end of a Mario game, which is to say moderately difficult, but not frustratingly so. Although the aesthetic palettes of Mario
-						Maker have little impact outside of offering a few different items, we decided to work in the Super Mario World palette, which was a
-						favorite to both of us.
-						<br>
-						<br>
-						Keeping in line with our thought of making what would be an end-game level, and for the sake of variety, we wanted to include a number
-						of different elements within the level. We split our level into a number of different sections. The first section is intended as a warm
-						up, and features straightforward encounters with enemies and fire bars to dodge. The next section kicks things up a notch, with an ice
-						platform and more dangerous enemy encounters. Following this is our first section themed around an item, a helmet power-up unique to
-						Mario Maker. This section relies on the use of the helmet to block the projectile hammer attacks of Hammer Bros above the player.
-						After successfully navigating this section, the player is rewarded with a checkpoint, after which another item-based section takes place.
-						The player must use the Super Feather to reach a high platform and then make use of its stalling capabilities to descend slowly through
-						a number of spikes. The next section features Yoshi and has the player dodging more enemies and obstacles. After this, the player uses
-						a Koopa Clown car the avoid enemies in the penultimate section. Finally, the player is treated to a relatively easy cooldown section
-						right before the final goal.
-						<br>
-						<br>
-						We found that the variety in our level did keep things fresh as we hoped, but after playtesting, we found that there were a number of
-						areas that needed from balancing and refinement. In a number of sections, some enemies were adjusted or removed, to make things a bit
-						easier in areas we were noticing large numbers of deaths. Additionally, some sections were adjusted more heavily. The initial section
-						was given a second path, that is easier to navigate, but doesn't offer a power-up reward. The Yoshi section was also reworked with an
-						alternate path, the features vine climbing and dodging instead. Finally, the Koopa Clown Car section was largely reworked to flow
-						better.
-						<br>
-						<br>
-						A layout for the initial iteration of the level can be seen below.
-						<br>
-						<br>
-						<a href="media/mario_level.png" target="_blank">
-							<img src="media/mario_level.png" width="450" alt="Mario Maker Level">
-						</a>
-					</h3>
-					<br>
-            	</div>
-            	
-    		</div>
-		</div>
-		
-		<h2>3D</h2>
+
+<!-- Order & display the content of the 3D section ------------------------------------------------------------------------ -->
+		<h2>3D Art</h2>
 		<div id="mainwrapper">
 			<div class="box">
-				<span class="Dragon" ><img src="media/dragonSmall.png" alt="Dragon"></span>
-				<span class="caption simple-caption"><p>Dragon</p></span>
+				<div class="imageBox">
+					<span class="Donuts" ><img src="media/Donuts/preview.png" alt="Donuts"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Donuts</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="MajorasMask" ><img src="media/maskSmall.png" alt="Majora's Mask"></span>
-				<span class="caption simple-caption"><p>Majora's Mask</p></span>
+				<div class="imageBox">
+					<span class="3DLittenSprite" ><img src="media/3DLittenSprite/preview.png" alt="3D Litten Sprite"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>3D Litten Sprite</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="BombFlower" ><img src="media/bombSmall.png" alt="Bomb Flower"></span>
-				<span class="caption simple-caption"><p>Bomb Flower</p></span>
+				<div class="imageBox">
+					<span class="3DMimikyuSprite" ><img src="media/3DMimikyuSprite/preview.png" alt="3D Mimikyu Sprite"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>3D Mimikyu Sprite</p></span>
+				</div>
 			</div>
 			
 			<div class="box">
-				<span class="ZombiecideCharacter"><img src="media/zombiecideSmall.png" alt="Zombiecide Character"></span>
-				<span class="caption simple-caption"><p>Zombiecide Character</p></span>
+				<div class="imageBox">
+					<span class="3DPokeballSprite" ><img src="media/3DPokeballSprite/preview.png" alt="3D Pokeball Sprite"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>3D Pokeball Sprite</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="Dragon" ><img src="media/Dragon/preview.png" width="250" heigght="250" alt="Dragon"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Dragon</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="MajorasMask" ><img src="media/MajorasMask/preview.png" width="250" heigght="250" alt="Majora's Mask"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Majora's Mask</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="BombFlower" ><img src="media/BombFlower/preview.png" alt="Bomb Flower"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Bomb Flower</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="ZombiecideCharacter"><img src="media/ZombiecideCharacter/preview.png" alt="Zombiecide Character"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Zombiecide Character</p></span>
+				</div>
 			</div>
 		</div>
 		
+<!-- Content for DONUTS ------------------------------------------------------------------------------------------------- -->
+		<div class="container23">
+    		<div class="accordion23"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Donuts
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Blender
+            	</h3>
+            	<br>
+            	<iframe src="https://p3d.in/e/4S3dX" width="600" height="400" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
+            	<hr>
+            	<div style="margin:auto; max-width:960px; min-height:226px; text-align:left; padding-left:50px; padding-right:50px">
+            		<a href="media/Donuts/donuts.png" target="_blank"><img src="media/Donuts/donuts.png" width="400" alt="Donuts" style=" float:right; margin-left:40px"></a>
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						After modeling the contents of this scene, I used a hair particle system to populate the frosted surface of the donuts with multicolored
+						sprinkles of pseudo-random orientations and slight variations in size. I also added several lights of different types to achieve realistic
+						lighting on the donuts, frosting, plate and cup, and table.
+					</h3>
+				</div>
+				<hr>
+    		</div>
+		</div>
+		
+<!-- Content for 3D LITTEN SPRITE ----------------------------------------------------------------------------------------- -->
+		<div class="container21">
+    		<div class="accordion21"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		3D Litten Sprite
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Maya, Blender
+            	</h3>
+            	<br>
+            	<iframe src="https://p3d.in/e/iVTGu" width="450" height="300" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
+            	<span class="bodyImage">
+            		<a href="media/3DLittenSprite/3DLittenSprite.gif" target="_blank">
+            			<img src="media/3DLittenSprite/3DLittenSprite.gif" alt="3D Litten Sprite">
+            		</a>
+            	</span>
+            	<hr>
+            	<h5>
+					Project Overview
+				</h5>
+				<br>
+				<h3 style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					After creating the model in Maya, I imported it into Blender. Using Blender’s node system, I applied a color ramp, in conjunction with an
+					alternating black and white tile texture, to the model's materials, creating a dither effect. Combined with a low-resolution output size,
+					this creates a look reminiscent of gameboy-era Pokemon sprites.
+				</h3>
+    			<hr>
+    		</div>
+		</div>
+
+<!-- Content for 3D MIMIKYU SPRITE ---------------------------------------------------------------------------------------- -->
+		<div class="container20">
+    		<div class="accordion20"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		3D Mimikyu Sprite
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Maya, Blender
+            	</h3>
+            	<br>
+            	<iframe src="https://p3d.in/e/OHOou" width="450" height="300" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
+            	<span class="bodyImage">
+            		<a href="media/3DMimikyuSprite/3DMimikyuSprite.gif" target="_blank">
+            			<img src="media/3DMimikyuSprite/3DMimikyuSprite.gif" alt="3D Mimikyu Sprite">
+            		</a>
+            	</span>
+            	<hr>
+            	<h5>
+					Project Overview
+				</h5>
+				<br>
+				<h3 style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					After creating the model in Maya, I imported it into Blender. Using Blender’s node system, I applied a color ramp, in conjunction with an
+					alternating black and white tile texture, to the model's materials, creating a dither effect. Combined with a low-resolution output size,
+					this creates a look reminiscent of gameboy-era Pokemon sprites.
+				</h3>
+    			<hr>
+    		</div>
+		</div>
+		
+<!-- Content for 3D POKEBALL SPRITE ------------------------------------------------------------------------------------- -->
+		<div class="container19">
+    		<div class="accordion19"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		3D Pokeball Sprite
+            	</h4>
+            	<h3>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Maya, Blender
+            	</h3>
+            	<br>
+            	<iframe src="https://p3d.in/e/tnEyZ" width="450" height="300" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
+            	<span class="bodyImage">
+            		<a href="media/3DPokeballSprite/3DPokeballSprite.gif" target="_blank">
+            			<img src="media/3DPokeballSprite/3DPokeballSprite.gif" alt="3D Pokeball Sprite">
+            		</a>
+            	</span>
+            	<hr>
+            	<h5>
+					Project Overview
+				</h5>
+				<br>
+				<h3 style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					After creating the model in Maya, I imported it into Blender. Using Blender’s node system, I applied a color ramp, in conjunction with an
+					alternating black and white tile texture, to the model's materials, creating a dither effect. Combined with a low-resolution output size,
+					this creates a look reminiscent of gameboy-era Pokemon sprites.
+				</h3>
+    			<hr>
+    		</div>
+		</div>
+		
+<!-- Content for DRAGON ------------------------------------------------------------------------------------------------- -->
 		<div class="container5">
     		<div class="accordion5"></div>
     		<div class="content">
-    			
-    			<br>
     			<hr>
-    			<br>
             	<h4>
-            		Dragon Model
+            		Dragon
             	</h4>
             	<h3>
-            		<br>
             		<span class="infoHeader">Tools Used:</span>
 					<br>
 					Maya
-					<br>
-					<br>
             	</h3>
+            	<br>
             	<iframe src="https://p3d.in/e/ZINKz" width="600" height="400" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
-            	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+            	<hr>
+            	<div style="margin:auto; max-width:960px; min-height:226px; text-align:left; padding-left:50px; padding-right:50px">
+					<iframe width="400" height="225" src="https://www.youtube.com/embed/F0xEpfw_fV4" style=" float:right; margin-left:40px" frameborder="0" allowfullscreen></iframe>
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						In this project, I created a model of a small dragon, and fully rigged and animated it. Having previously worked on a human model
-						and various other objects and props, I wanted to work on a creature of some sort. I decided on a dragon because I think they are
-						visually interesting and have additional extremities in the form of wings and a tail. The character I envisioned and decided to work
-						was a slightly anthropomorphized and its body reflects that; its forearms are more human-like and its backs legs are more hinged like
-						various other animals. With a cartoonish look in mind a created a child-like small dragon. Reflective of these choices are its large
-						head, small wings, and long tail that it would grow into. After finishing the model itself, I created a skeleton to support rigging,
-						including the main limbs, head, tail, wings and ears. Finally, I created a series of three animations for the character. Idle, walk,
-						and run cycles, although the walk and run cycles are really more flying cycles.
+						In Maya, I created a model of a small, cartoonish dragon. Next, I created a skeleton to support rigging, including controls for the arms,
+						legs, head, tail, wings and ears, using skin weighting to ensure the controls manipulated the mesh correctly. Finally, I created a series
+						of looping animations for idling, slow flight, and rapid flight.
 					</h3>
-            	</div>
-            	<br>
-            	<hr>
-            	<br>
-            	<h5>
-            		Animations
-            	</h5>
-    			<iframe width="600" height="337.5" src="https://www.youtube.com/embed/p0ojq3x9Eeg" frameborder="0" allowfullscreen></iframe>
-            	
+				</div>
+				<hr>
     		</div>
 		</div>
 		
+<!-- Content for MAJORA'S MASK -------------------------------------------------------------------------------------------- -->
 		<div class="container6">
     		<div class="accordion6"></div>
     		<div class="content">
-    		
-    			<br>
     			<hr>
-    			<br>
             	<h4>
             		Majora's Mask Model
             	</h4>
             	<h3>
-            		<br>
             		<span class="infoHeader">Tools Used:</span>
 					<br>
 					Maya, Photoshop
-					<br>
-					<br>
             	</h3>
+            	<br>
             	<iframe src="https://p3d.in/e/7Mdg8" width="600" height="400" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
-            	<br>
-            	<br>
-    			<hr>
-    			<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+            	<hr>
+            	<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						My goal for this project was to model and texture a video game prop. I decided upon Majora's Mask, from the Zelda series game of the
-						same name. Being relatively simple in shape, but visually intriguing and eye-catching it seemed like great choice. After modelling
-						the shape of the mask, staying true to the source material, and setting up its UVs, I moved on to texturing the mask. Once again, I
-						stayed close to the source material by utilizing the same colors as the original mask, with a few changes around the eyes to create
-						a slightly different effect to my taste. At this point, I decided to deviate and add my own take on the mask by making ir look more
-						realistic. This was primarily achieved by adding a grainy wooden texture to the mask, as well as a metallic rim to back of the mask.
-						Finally, I baked an ambient occlusion map to make the highlights and shadows of the mask appear more realistic.
+						In Maya, I modeled Majora's Mask from the Legend of Zelda series. After finishing the model and setting the UVs, I used
+						Photoshop to give the mask a realistic texture by adding a grainy wooden texture on top of the painted colors. Finally, using Maya and
+						Photoshop, I baked an ambient occlusion map to make the highlights and shadows of the mask appear more realistic.
 					</h3>
-            	</div>
-            	
+				</div>
+				<hr>
     		</div>
 		</div>
 		
+<!-- Content for BOMB FLOWER --------------------------------------------------------------------------------------------- -->
 		<div class="container7">
     		<div class="accordion7"></div>
     		<div class="content">
-    		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
             		Zelda Bomb Flower Model
             	</h4>
@@ -1332,39 +960,30 @@ $(document).ready(function() {
 					<br>
             	</h3>
             	<iframe src="https://p3d.in/e/KCcgM+subd" width="600" height="400" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
-            	<br>
-            	<br>
     			<hr>
-    			<br>
     			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This project was done to create a low-poly prop for a scene similar in theme to the recurring Death Mountain area from the legend of
-						Zelda series. Commonly found around within the Zelda series are explosive plants called bomb flowers. I created my own interpretation
-						of this Zelda staple by combining elements from bomb flowers from different Zelda games. I took the general shape of the bomb-like fruit
-						from Skyward Sword's interpretation of the bomb flower; featuring a fuse-like protrusion atop the plant as well as an open, peeling top.
-						The coloration was primarily inspired by the vibrant bomb flower plant from the Wind Waker, as was the leafy bottom of the plant. After
-						modelling and coloring the bomb flower, I gave it a more realistic look by applying various textures to the different parts of the plant.
-						I used an apple skin texture on the blue skin of the plant, a bumpy pumpkin-like texture on the exposed brown part of the fruit and a
-						leafy texture on the leaves of the plants.
+						In Maya, I modeled a bomb flower from the Legend of Zelda series, combining elements from different games into my own take on the
+						plant. After finishing the model and setting the UVs, I used Photoshop to give the plant a realistic texture by adding an apple skin
+						texture for the blue outer skin, a bumpy pumpkin-like texture on the exposed brown inner area and a leafy texture on the leaves
+						themselves.
 					</h3>
+					<hr>
             	</div>
-            	
     		</div>
 		</div>
 		
+<!-- Content for ZOMBIECIDE CHARACTER ------------------------------------------------------------------------------------- -->
 		<div class="container8">
     		<div class="accordion8"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
-            		Zombiecide-style Character Model
+            		Zombiecide Character
             	</h4>
             	<h3>
             		<br>
@@ -1375,59 +994,199 @@ $(document).ready(function() {
 					<br>
             	</h3>
             	<iframe src="https://p3d.in/e/ArLJx+subd" width="600" height="400" frameborder="0" seamless allowfullscreen webkitallowfullscreen></iframe>
-            	<br>
-            	<br>
     			<hr>
-    			<br>
     			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						The goal of this project was to create a character in the style of the board game
-						<a href="http://zombicide.com/en/" target="_blank">Zombiecide.</a> Looking at the existing characters within the world of Zombiecide,
-						most characters fall within the typical norm of a zombie apocalypse. That is to say, they wore normal clothing and armed themselves
-						with any sort of weapon imaginable and available. My character, loosely based off of myself, wears a hoodie and jeans with his weapons
-						of choice being two uzi submachine guns and a thin katana-like sword. After creating a basic human model, I then added clothes, hair
-						and finally weapons before finishing up by adding more detail and variation to the clothing, giving it folds and making it look a bit
-						looser.
+						In Maya, I modeled a human character with weaponry, inspired by the post-apocalyptic setting of the tabletop game Zombiecide. My
+						character model wears a hoodie, jeans and shoes and includes a thin katana-like sword and two uzi submachine guns.
 					</h3>
+					<hr>
             	</div>
-        		
+    		</div>
+		</div>
+		<br>
+
+<!-- Order & display the content of the 2D section ------------------------------------------------------------------------ -->
+		<h2>2D Art</h2>
+		<div id="mainwrapper">
+			<div class="box">
+				<div class="imageBox">
+					<span class="SmashRoutesIcons" ><img src="media/SmashRoutesIcons/preview.png" width="250" height="250" alt="Smash Routes Icon Set"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Smash Routes Icon Set</p></span>
+				</div>
+			</div>
+		
+			<div class="box">
+				<div class="imageBox">
+					<span class="Pikmin" ><img src="media/PikminPoster/preview.png" alt="Pikmin Poster"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Pikmin Poster</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="Deranged" ><img src="media/DerangedTypography/preview.png" alt="Deranged Typography"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Deranged Typography</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="Ignition" ><img src="media/IgnitionPoster/preview.png" alt="Ignition Poster"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Ignition Poster</p></span>
+				</div>
+			</div>
+			
+			<div class="box">
+				<div class="imageBox">
+					<span class="Grasp" ><img src="media/GraspTheFuture/preview.png" alt="Grasp The Future"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Grasp The Future</p></span>
+				</div>
+			</div>
+		</div>
+		
+<!-- Content for SMASH ROUTES ICONS ------------------------------------------------------------------------------------- -->
+		<div class="container22">
+    		<div class="accordion22"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Smash Routes Icon Set
+            	</h4>
+            	<h3>
+            		<br>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Photoshop, Amplify Shader Editor
+					<br>
+					<br>
+            	</h3>
+            	<span class="bodyTable">
+					<table>
+						<tr>
+							<td>
+								<a href="media/SmashRoutesIcons/footballHelmetIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/footballHelmetIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/footballThrownIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/footballThrownIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/gameControllerIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/gameControllerIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/jackalopeIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/jackalopeIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/knightHelmetIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/knightHelmetIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/ninjaIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/ninjaIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/puppyIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/puppyIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="media/SmashRoutesIcons/radioactiveIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/radioactiveIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/robotIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/robotIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/smashRoutesIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/smashRoutesIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/smashRoutesIconAI.png" target="_blank">
+									<img src="media/SmashRoutesIcons/smashRoutesIconAI.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/smashRoutesIconMetal.png" target="_blank">
+									<img src="media/SmashRoutesIcons/smashRoutesIconMetal.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/tRexIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/tRexIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+							<td>
+								<a href="media/SmashRoutesIcons/vikingHelmetIcon.png" target="_blank">
+									<img src="media/SmashRoutesIcons/vikingHelmetIcon.png" alt="Football Helmet Icon">
+								</a>
+							</td>
+						</tr>
+					</table>
+				</span>
+				<hr>
+            	<br>
+    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+    				<video width="300" height="300" controls loop style="float:right; margin-left: 40px; margin-bottom: 20px;">
+  						<source src="media/SmashRoutesIcons/skullIcon.mp4" type="video/mp4">
+					</video>
+					<video width="300" height="300" controls loop style="float:right; margin-left: 40px; margin-bottom: 20px;">
+  						<source src="media/SmashRoutesIcons/dragonIcon.mp4" type="video/mp4">
+					</video>
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Using Photoshop, I created a series of icons for users to use to customize their profile for the Smash Routes app. These can be purchased
+						in the in-app shop, with in-app currency earned by playing the game. Coming in various colors and containing a wide range of subject
+						matter, these icons exist in different categories and price tiers.
+						<br>
+						<br>
+						For two of these icons, the Dragon and Skull, I used the Amplify Shader Editor plugin for Unity to create animated special effects to
+						accompany the base image and create a more interesting and valuable looking icons for the highest price tier in the in-app shop. The
+						dragon icon features an animated flaming background, made with scrolling and distortion effects. The skull icon slowly fades in and out
+						and a scrolling rainbow texture colorizes the details on the skull.
+					</h3>
+					<hr>
+            	</div>
     		</div>
 		</div>
 		
-		<h2>2D</h2>
-		<div id="mainwrapper">
-			<div class="box">
-				<span class="Pikmin" ><img src="media/pikminSmall.png" alt="Pikmin Poster"></span>
-				<span class="caption simple-caption"><p>Pikmin Poster</p></span>
-			</div>
-			
-			<div class="box">
-				<span class="Deranged" ><img src="media/derangedSmall.png" alt="Deranged Typography"></span>
-				<span class="caption simple-caption"><p>Deranged Typography</p></span>
-			</div>
-			
-			<div class="box">
-				<span class="Ignition" ><img src="media/ignitionSmall.png" alt="Ignition Poster"></span>
-				<span class="caption simple-caption"><p>Ignition Poster</p></span>
-			</div>
-			
-			<div class="box">
-				<span class="Grasp" ><img src="media/graspSmall.png" alt="Grasp The Future"></span>
-				<span class="caption simple-caption"><p>Grasp The Future</p></span>
-			</div>
-		</div>
-		
+<!-- Content for PIKMIN POSTER -------------------------------------------------------------------------------------------- -->
 		<div class="container9">
     		<div class="accordion9"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
             		Pikmin Poster
             	</h4>
@@ -1440,47 +1199,34 @@ $(document).ready(function() {
 					<br>
             	</h3>
             	<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-    				<a href="media/pikmin_poster.jpg" target="_blank">
-						<img src="media/pikmin_poster.jpg" height="340" alt="Pikmin Poster" style=" float:right; margin-left: 40px; margin-bottom: 40px">
+    			<div style="margin:auto; max-width:960px; min-height:344px; text-align:left; padding-left:50px; padding-right:50px">
+    				<a href="media/PikminPoster/pikmin_poster.jpg" target="_blank">
+						<img src="media/PikminPoster/pikmin_poster.jpg" height="340" alt="Pikmin Poster" style=" float:right; margin-left: 40px;">
 					</a>
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This project was done in the style of some of
-						<a href="http://marinkoillustration.com" target="_blank">Marinko Milosevski's</a> video game posters, which I find very appealing. This
-						style uses a sort of minimalism, with only one or two prominent colors and some major object or symbol from the series creating a large
-						positive-negative space split. One series that was not represented among Milosevski's posters and was on my mind at the inception of
-						this project was the Pikmin series. I thought that the silhouettes of plants would be interesting to look at and that the Pikmin series'
-						flower symbol would work well with this design style.
+						Using Photoshop, I created a minimalist poster for the 2001 Nintendo Gamecube game Pikmin. I utilized the game's flower iconography
+						as a primary element of my design. I also stayed within a monochromatic green color palette and utilized positive and negative space and
+						silhouettes.
 						<br>
 						<br>
-						Drawing from Milosevski's Ocarina of Time poster, I decided to use the Pikmin flower as a divide between positive and negative space,
-						similarly adding a grassiness to the divide. Inside of the flower, I decided to set my scene as a recreation of Captain Olimar's
-						crash landing upon the planet of PNF-404 at the beginning of the game. I thought that this would be a fitting moment to represent the
-						game as a whole and would also strongly tie to the quote "I've crash landed on a strange planet...", a piece of Olimar's dialogue from
-						the game.
-						<br>
-						<br>
-						As I worked on designing the scene within the flower, I set Olimar's crashed ship in the background, with Olimar himself walking
-						towards the foreground, where the silhouettes of Pikmin can be seen hiding among the grass. I found that this helped create a line
-						of sight which drew the eyes from the top of the poster to the bottom, and alos provided enough spacing to make each silhouette
-						separate and distinct.
+						A large flower serves as a window into the scene, composed of a grassy texture to feel at home alongside the contents of the scene.
+						Inside the scene, a visual through-line is created by the crashed spaceship, Captain Olimar and the Pimkmin along the bottom of the
+						flower silhouette, continuing down to the title and credit text beneath.
 					</h3>
             	</div>
-        		
+            	<hr>
     		</div>
 		</div>
 		
+<!-- Content for DERANGED TYPOGRAPHY ------------------------------------------------------------------------------------- -->
 		<div class="container10">
     		<div class="accordion10"></div>
     		<div class="content">
-    		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
             		Deranged Typography
             	</h4>
@@ -1494,39 +1240,34 @@ $(document).ready(function() {
             	</h3>
             	<br>
     			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-    				<a href="media/deranged.jpg" target="_blank">
-						<img src="media/deranged.jpg" height="340" alt="Deranged Typography" style=" float:right; margin-left: 40px; margin-bottom: 40px">
+    				<a href="media/DerangedTypography/deranged.jpg" target="_blank">
+						<img src="media/DerangedTypography/deranged.jpg" height="340" alt="Deranged Typography" style="float:right; margin-left: 40px;">
 					</a>
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This goal of this project was to create a thought-provoking visual arrangement based on a certain word. I liked the idea of choosing
-						a word that conveyed some degree of discomfort and craziness. Eventually I decided upon deranged as my word of choice and began
-						building my piece from there. Working with a word that conveyed the idea of madness or insanity, I thought to design my piece such
-						that it conveyed the feeling of an encroaching darkness that was invasive and eating away at or decaying sanity and composure.
+						Using Illustrator, I created a typographic arrangement based on the word Deranged. Working with a word that conveyed the idea of
+						madness or insanity, I sought to design this piece in a way that conveyed the feeling of an encroaching darkness that was invasive and
+						degenerative.
 						<br>
 						<br>
-						I chose a myriad of related or similar words and arranged them as thorny tendrils surrounding the space behind the centralized word
-						deranged. I chose the font Osaka to use for the word deranged, as it appeared very ordered and neat. In stark contract, I used the font
-						Goon Spectre for the thorned tendrils in the background, as they appeared messy and jagged. To add a little bit more variation
-						and to help break up negative space, I used periods from the Goon Spectre font to add some particles to the scene, which I also thought
-						created a feeling of crumbling and decay. Lastly, I decided to use a simple black and white color scheme to help highlight the
-						contrasting themes and imagery within the image.
+						I arranged related words as thorny tendrils surrounding the space behind the centralized word, Deranged. I used an ordered and neat
+						font, Osaka, for the word Deranged. In contrast I used a messy and jagged font, Goon Spectre, for the thorny
+						tendrils in the background. To add variation and to break up negative space, I used periods from the Goon Spectre font to add noise
+						to the background, which I also felt added to the feeling of decay.
 					</h3>
+					<hr>
             	</div>
-        		
     		</div>
 		</div>
 		
+<!-- Content for IGNITION POSTER ----------------------------------------------------------------------------------------- -->
 		<div class="container11">
     		<div class="accordion11"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
             		Ignition Poster
             	</h4>
@@ -1539,41 +1280,35 @@ $(document).ready(function() {
 					<br>
             	</h3>
             	<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-    				<a href="media/ignition_poster.jpg" target="_blank">
-						<img src="media/ignition_poster.jpg" height="340" alt="Ignition Poster" style=" float:right; margin-left: 40px; margin-bottom: 40px">
+    			<div style="margin:auto; max-width:960px; min-height:350px; text-align:left; padding-left:50px; padding-right:50px">
+    				<a href="media/IgnitionPoster/ignition_poster.jpg" target="_blank">
+						<img src="media/IgnitionPoster/ignition_poster.jpg" height="340" alt="Ignition Poster" style="float:right; margin-left: 40px;">
 					</a>
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This goal of this project was to create a faux movie poster. I zeroed in on an anime theme, and decided to make a character the main
-						focus of the poster. The character I depicted on the poster has the ability to use fire magic, and so the theme of fire became an
-						important visual element of the poster as a whole. Making the character appear somewhat serious, as though lost in thought about
-						something important, I had him face off to the side of the poster. I also cloaked him in a fiery aura, with bits of actual flame
-						igniting on and around him. I also gave his eyes a fiery glow and in conjunction with his fluttering mantle, added an indication of
-						what might be a breeze, blowing the fiery aura behind him.
+						Using Photoshop, I created a movie poster for a faux anime property, Ignition. Many anime are character-centric, so I made my
+						character the focus of the poster. I depicted him as somewhat serious, lost in thought staring off to the side. This character has the
+						ability to use fire magic, which I used throughout the poster, cloaking the character in a fiery aura with bits of actual flame igniting
+						around him and a fiery glow in his eyes.
 						<br>
 						<br>
-						Another element of major importance to the poster is the title of the movie, Ignition. In keeping with the fire theme, I made the title
-						appear atop a background of scrap metal and the title itself appear to be made of a metal being heated up. Similar to the character,
-						bits of flame and sparks are flying off of the title, though the title overall has a more ruddy color to it, in keeping with the metal.
-						I chose the font Battlemage because I thought it looked appropriately like a magical script, befitting the character and the tying in
-						nicely with the fiery theme.
+						Another important element to the poster is the movie title. Continuing with the fire theme, I set the title atop a background of scrap
+						metal and the styled the title itself to look like heated metal, with sparks and bits of flame flying off of it. I used the
+						Battlemage font for the title because of its runic script look.
 					</h3>
             	</div>
-        		
+            	<hr>
     		</div>
 		</div>
 		
+<!-- Content for GRASP THE FUTURE ----------------------------------------------------------------------------------------- -->
 		<div class="container12">
     		<div class="accordion12"></div>
     		<div class="content">
-        		
-        		<br>
     			<hr>
-    			<br>
             	<h4>
             		Grasp The Future
             	</h4>
@@ -1586,86 +1321,413 @@ $(document).ready(function() {
 					<br>
             	</h3>
             	<br>
-    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
-    				<a href="media/grasp_the_future.jpg" target="_blank">
-						<img src="media/grasp_the_future.jpg" height="340" alt="Grasp The Future" style=" float:right; margin-left: 40px; margin-bottom: 40px">
+    			<div style="margin:auto; max-width:960px; min-height:350px; text-align:left; padding-left:50px; padding-right:50px">
+    				<a href="media/GraspTheFuture/grasp_the_future.jpg" target="_blank">
+						<img src="media/GraspTheFuture/grasp_the_future.jpg" height="340" alt="Grasp The Future" style="float:right; margin-left: 40px;">
 					</a>
 					<h5>
 						Project Overview
 					</h5>
 					<br>
 					<h3>
-						This goal of this project was to create a faux album cover. I decided use a photo I took in Japan, of a series of stone lion heads,
-						as a base. With this image, I wanted to create a balance between the text and the image itself, while at the same time blending them
-						together. I decided to take a minimalist approach and make use of a gradient fill, which I find to to be very appealing visually.
-						Infusing color with the original photo of a stone lion head on a wall, I arrived at the idea of graffiti as my imagery. Purple and
-						orange are not colors I tend to often use in excess, but I thought that they popped nicely in this piece.
+						Using Photoshop, I created an album cover based around a photo I took of several stone lion heads, on a trip to Japan. Riffing on my
+						original photo, which featured a grey stone wall, I added paint splatter above and below the lion head to set text on. Paint drips and
+						splatter on either side of the lion head help fill negative space and give a sense of gravity to the image.
 						<br>
 						<br>
-						Keeping with my minimalist approach I recreated the bricks behind the lion and applied a blob of graffiti paint on top of and at the
-						bottom of the image, with the sitting comfortably in the middle. I added a number of paint dribbles coming down from the top of the
-						image, which served a number of purposes. First, they added a sense of realism, as graffiti often runs to some degree. They also broke
-						up the white space to either side of the lion and helped show the progression of the gradient. The messier paint splats below the lion
-						also help to achieve this.
-						<br>
-						<br>
-						The meaning of the phrase grasp the future is not something I decided upon with one set meaning. Rather, I intended it to be a
-						generally positive message open to interpretation. I've found that in listening to Japanese music, there are many lyrics or phrases
-						that share the same sort of openness and almost melodramatic symbolism that I was aiming for here. As my base photo originated from
-						Japan, I thought it appropriately fitting that I attempt to capture the same feel as many of my favorite Japanese songs.
+						The meaning of the phrase Grasp The Future is not something I intended to have one set meaning. Rather, I intended it to be a
+						generally positive message open to interpretation. Many Japanese songs that I enjoy feature a similar positive, open message. Because the
+						subject of my photo is from Japan, that conceptual through-line felt appropriate. 
 					</h3>
             	</div>
-        			
+            	<hr>
+    		</div>
+		</div>
+		<br>
+		
+<!-- Order & display the content of the LEVEL DESIGN section ------------------------------------------------------------- -->
+		<h2>Level Design</h2>
+		<div id="mainwrapper">
+			<div id="box-1" class="box">
+				<div class="imageBox">
+					<span class="ProjectSpark" ><img src="media/ProjectSparkLevel/preview.png" alt="Project Spark Platformer Level"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Project Spark Platformer Level</p></span>
+				</div>
+			</div>
+			
+			<div id="box-2" class="box">
+				<div class="imageBox">
+					<span class="Halo4" ><img src="media/HaloLevel/preview.png" alt="Halo 4 Map"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Halo 4 Multiplayer Map</p></span>
+				</div>
+			</div>
+			
+			<div id="box-2" class="box">
+				<div class="imageBox">
+					<span class="MinecraftZelda" ><img src="media/MinecraftZeldaLevel/preview.png" alt="Minecraft Zelda Dungeon"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Minecraft Zelda Dungeon</p></span>
+				</div>
+			</div>
+			
+			<div id="box-2" class="box">
+				<div class="imageBox">
+					<span class="MarioMaker" ><img src="media/MarioMakerLevel/preview.png" alt="Mario Maker Level"></span>
+				</div>
+				<div class="captionBox">
+					<span class="caption simple-caption"><p>Mario Maker Level</p></span>
+				</div>
+			</div>
+		</div>
+		
+<!-- Content for PROJECT SPARK LEVEL ------------------------------------------------------------------------------------- -->
+		<div class="container13">
+    		<div class="accordion13"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Project Spark Platformer Level
+            	</h4>
+            	<h3>
+            		<br>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Project Spark (Xbox One)
+					<br>
+					<br>
+            	</h3>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/1jISS3zsIiA" frameborder="0" allowfullscreen></iframe>
+    			<hr>
+    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Using Project Spark, for the Xbox One, I created a Metroidvania-style 2-D platformer level, from assets provided and with programmed
+						behaviors.
+						<br>
+						<br>
+						The player character can run and jump by default, but players can bolster their arsenal of abilities by collecting upgrades found
+						throughout the level. Upgrades include the ability to shoot fireballs as an attack, a basic dash ability and an improved dash that allows
+						the player to break through stone blocks and damage enemies. As each upgrade is introduced, the level is structured to ensure that players
+						learn how they function before progressing.
+						<br>
+						<br>
+						The player will encounter a few different types of enemies throughout the level. These include small goblins, flying birds, and larger,
+						stronger goblins. At the end of the level a large golem enemy acts as a boss. I also included incentives and paths for players to backtrack through the level and retread old ground with their upgraded arsenal, giving
+						the player a sense of progression while making the game space feel more connected.
+					</h3>
+            	</div>
+    		</div>
+		</div>
+		
+<!-- Content for HALO 4 LEVEL --------------------------------------------------------------------------------------------- -->
+		<div class="container14">
+    		<div class="accordion14"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Halo 4 Multiplayer Map
+            	</h4>
+            	<h3>
+            		<br>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Halo: The Master Chief Collection - Halo 4 - Forge Mode (Xbox One)
+					<br>
+					<br>
+            	</h3>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/f35H66RKO_M" frameborder="0" allowfullscreen></iframe>
+    			<hr>
+    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Using Halo 4's Forge mode, part of the Master Chief Collection for the for the Xbox One, I built a multiplayer map, intended for 4-8
+						players on the Slayer and Team Slayer gametypes.
+						<br>
+						<br>
+						This level features several levels of verticality and was inspired by maps such as Halo 2's Midship and Halo 4's Adrift. Designed with a
+						classic Halo experience in mind, this map only supports the Sprint Armor Ability. Load-outs are also restricted. Players start with an
+						Assault Rifle and a Pistol, and have to find other weapons scattered around the map. Power weapons are located in central, team-neutral
+						areas and are relatively few in number, where less devastating weapons are more abundant.
+						<br>
+						<br>
+						Keeping in mind lines of sight and confrontational hotspots, most central areas are broken up by obstacles intentionally placed to
+						disrupt vision, with the exception of the topmost area, which is by contrast, open and exposed. Players are also provided with many
+						different ways to navigate the level. In addition to cycling through the three different vertical tiers, the middle
+						and bottom levels feature several tunnels that honeycomb in and out of the central area.
+					</h3>
+            	</div>
+    		</div>
+		</div>
+		
+<!-- Content for MINECRAFT ZELDA LEVEL ------------------------------------------------------------------------------------ -->
+		<div class="container15">
+    		<div class="accordion15"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Minecraft Zelda Dungeon
+            	</h4>
+            	<h3>
+            		<br>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Minecraft (Mac), MCEdit (Mac)
+					<br>
+					<br>
+            	</h3>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/CSpT9-eqIHw" frameborder="0" allowfullscreen></iframe>
+    			<hr>
+    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Using Minecraft and the Zelda Sword Skills mod, I created a  level in the style of dungeons from the Legend of Zelda series. I also used
+						the Zelda Pack texture pack to make the game look and feel closer to a Zelda game.
+						<br>
+						<br>
+						I made several alterations to the base Minecraft experience to make this dungeon level feel as closer to a Zelda game. I equipped the
+						player with a sword and shield, the most basic staples of a Zelda game. Progressing through the dungeon, players will eventually find a
+						bow and arrows which can be used to shoot enemies and trigger switches, a hookshot to latch onto faraway markers, food items to heal with,
+						and keys to open locked doors. The Zelda Sword Skills mod also re-skins Minecraft enemies such as Skeletons, Bats, and Slimes into enemies
+						from the Zelda series such as Stalfos, Keese and Chu-Chu's.
+						<br>
+						<br>
+						I also included several Zelda-style puzzles in the dungeon,  including defeating the enemies in a room, finding and hitting switches,
+						logic puzzles, and making use of special items such as the bow and arrows and the hookshot. At the end of the dungeon, players fight a
+						boss battle, against witch enemies, re-skinned as Koume and Kotake from the Legend of Zelda series.
+					</h3>
+            	</div>
+    		</div>
+		</div>
+		
+<!-- Content for MARIO MAKER LEVEL ---------------------------------------------------------------------------------------- -->
+		<div class="container16">
+    		<div class="accordion16"></div>
+    		<div class="content">
+    			<hr>
+            	<h4>
+            		Mario Maker Level
+            	</h4>
+            	<h3>
+            		<br>
+            		<span class="infoHeader">Tools Used:</span>
+					<br>
+					Mario Maker (Wii U)
+					<br>
+					<br>
+            	</h3>
+            	<iframe width="600" height="337.5" src="https://www.youtube.com/embed/0ae3BfJNSrY" frameborder="0" allowfullscreen></iframe>
+    			<hr>
+    			<div style="margin:auto; max-width:960px; text-align:left; padding-left:50px; padding-right:50px">
+					<h5>
+						Project Overview
+					</h5>
+					<br>
+					<h3>
+						Using Mario Maker, for the Wii U, I created a Mario level in the Super Mario World format. Styling this level after special worlds, found in the end-game of Mario games, this level includes many unique elements and distinct
+						sections.
+						<br>
+						<br>
+						The first section acts as a warm up, and features straightforward encounters with enemies and fire bars. The next section
+						ups the difficulty, with an ice platform and more dangerous enemy encounters. After this is a section themed around the Helmet power-up.
+						This section relies on the use of the helmet to block the projectile hammer attacks of Hammer Bros above the player. After navigating the
+						helmet section, the player is rewarded with a checkpoint. Next, the player must use the Super Feather power-up to navigate another
+						item-themed section, using it to reach a high platform and then making use of its stalling capabilities to descend slowly through spikes.
+						The next section features Yoshi and has the player dodging more enemies and obstacles. After this, the player uses a Koopa Clown car to
+						avoid enemies in the penultimate section. Finally, after a relatively easy cooldown section the player reaches the goal post.
+					</h3>
+            	</div>
     		</div>
 		</div>
 	</div> 
 </div> 
 
+<!-- Display the ABOUT splash & give it text ----------------------------------------------------------------------------- -->
 <div id="aboutSplash">
-	<div class="content" >
+	<div class="content">
 		<h1>About</h1>
 	</div> 
 </div>
 
+<!-- ABOUT Content -------------------------------------------------------------------------------------------------------- -->
 <div id="aboutContent">
-	<div class="content" >
+	<div class="content">
 		<h3>
-			My name is Joseph Horsmann. I'm pursuing a degree in New Media Interactive Development, as well as minors in Game Design and Japanese through
-			the Rochester Institute of Technology.
+			My name is Joseph Horsmann. I'm a digital artist working in games and media. I graduated from the Rochester Institute of Technology with a major in New Media Interactive
+			Development and minors in Game Design and Japanese.
 		</h3>
 		<br>
 		<h3>
-			I believe that one of the greatest joys in life comes from the shared experience created when someone puts their work out into the world for
-			others to appreciate. As a fan of innumerable pieces of media across many different art forms, I've been positively impacted by so many of the
-			works that I've enjoyed. This gives me cause and purpose to create so that I can have that effect on others. Some of the specific disciplines
-			that I am particularly passionate about include, building relatable characters, creating worlds with depth and a sense of realism, crafting
-			engaging and inspiring visuals and facilitating engaging gameplay.
+			My professional experience includes work in UI, graphic design, marketing, video editing and quality assurance testing. I also have experience working in 3D, animation
+			and level design. As part of the development team at CogReps Inc, I worked on the Smash Routes app, which has been released on the Apple App store,
+			Google Play store and Amazon Appstore.
 		</h3>
 		<br>
 		<h3>
-			I have experience working within number of visual mediums, including 2D, 3D, Animation and UI Design. I'm practiced in aspects of
-			game design such as level design and mechanical design. I'm also well acquainted with programs
-			such as the Adobe and Autodesk design and creation suites and Unity. Additionally, I have experience working in coding languages including HTML,
-			Javascript, C# and C++.
+			I am versed in comprehensive documentation and tracking of project features. I'm adept at managing and facilitating communication between team members. I have worked
+			collaboratively as part of a game development team to meet release deadlines. I also have experience fulfilling multiple roles simultaneously and stepping in to fill vacant
+			roles.
+		</h3>
+		<br>
+		<h3>
+			I am an avid fan and consumer of many types of media. Because of the positive impact that many of these works have had on me, I love to create and put my own work out
+			into the world for other people to enjoy and draw inspiration from.
 		</h3>
 	</div> 
-</div> 
+</div>
 
+<!-- Display the SKILLS splash & give it text ----------------------------------------------------------------------------- -->
+<div id="skillsSplash">
+	<div class="content">
+		<h1>Skills</h1>
+	</div> 
+</div>
+
+<!-- SKILLS Software Table ------------------------------------------------------------------------------------------------ -->
+<div id="skillsContent">
+	<div class="content">
+		<div id="skillsTable">
+			<table>
+				<tr>
+					<th colspan="3">Software</th>
+				</tr>
+				<tr>
+					<td>
+						<img src="media/skillsIcons/adobeAcrobat.png" alt="Adobe Acrobat">
+						<p>Adobe Acrobat</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/adobeAfterEffects.png" alt="Adobe After Effects">
+						<p>Adobe After Effects</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/adobeIllustrator.png" alt="Adobe Illustrator">
+						<p>Adobe Illustrator</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="media/skillsIcons/adobePhotoshop.png" alt="Adobe Photoshop">
+						<p>Adobe Photoshop</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/adobePremiere.png" alt="Adobe Premiere">
+						<p>Adobe Premiere</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/amplifyShaderEditor.png" alt="Amplify Shader Editor">
+						<p>Amplify Shader Editor</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="media/skillsIcons/autodeskMaya.png" alt="Autodesk Maya">
+						<p>Autodesk Maya</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/autodeskMudbox.png" alt="Autodesk Mudbox">
+						<p>Autodesk Mudbox</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/blender.png" alt="Blender">
+						<p>Blender</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="media/skillsIcons/microsoftOffice.png" alt="Microsoft Office">
+						<p>Microsoft Office</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/rpgMaker.png" alt="RPG Maker">
+						<p>RPG Maker</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/unity.png" alt="Unity">
+						<p>Unity</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+<!-- SKILLS Programming Table --------------------------------------------------------------------------------------------- -->
+		<div id="skillsTable">
+			<table>
+				<tr>
+					<th colspan="3">Programming</th>
+				</tr>
+				<tr>
+					<td>
+						<img src="media/skillsIcons/css.png" alt="CSS">
+						<p>CSS</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/html.png" alt="HTML">
+						<p>HTML</p>
+					</td>
+					<td>
+						<img src="media/skillsIcons/javascript.png" alt="Javascript">
+						<p>Javascript</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+<!-- SKILLS Other Table ------------------------------------------------------------------------------------------------ -->
+		<div id="skillsTable">
+			<table>
+				<tr>
+					<th>Other</th>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li>Versed in comprehensive documentation and tracking of project features</li>
+							<li>Adept at managing and facilitating communication between team members</li>
+							<li>Experienced in working as part of a game development team to meet release deadlines</li>
+							<li>Skilled at fulfilling multiple roles simultaneously and stepping in to fill vacant roles</li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div> 
+</div>
+
+<!-- Display the CONTACT splash & give it text ---------------------------------------------------------------------------- -->
 <div id="contactSplash">
 	<div class="content">
 		<h1>Contact</h1>
 	</div> 
 </div>
 
+<!-- CONTACT Content ----------------------------------------------------------------------------------------------------- -->
 <div id="contactContent">
-	<div class="content" >
-		<h3>Contact me any time by emailing me at:</h3>
-		<h3><a href="mailto:jth3723@rit.edu">jth3723@rit.edu</a></h3>
+	<div class="content">
+		<h3>Contact me by email me at:</h3>
+		<h3><a href="mailto:josephhorsmann@gmail.com">josephhorsmann@gmail.com</a></h3>
 		<br>
-		<h3>Feel free to take a look at my résumé below:</h3>
-		<h3><a href="media/resume.pdf" target="_blank">Résumé</a></h3>
+		<h3>View my resume:</h3>
+		<h3><a href="media/resume.pdf" target="_blank">Resume</a></h3>
 	</div> 
-</div> 
+</div>
 
 </body>
 </html>
